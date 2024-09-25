@@ -5,61 +5,63 @@ import java.util.List;
 
 public class Partido {
     private String nome;
+    private int limiteSenadores;
+    private int limiteDeputadosFederais;
+    private int limiteDeputadosEstaduais;
     private List<Candidato> candidatos;
-    private static final int MAX_PRESIDENTE = 1;
-    private static final int MAX_GOVERNADOR = 1;
-    private int maxSenadores;
-    private int maxDepFederais;
-    private int maxDepEstaduais;
 
-    public Partido(String nome, int maxSenadores, int maxDepFederais, int maxDepEstaduais) {
+    public Partido(String nome, int limiteSenadores, int limiteDeputadosFederais, int limiteDeputadosEstaduais) {
         this.nome = nome;
+        this.limiteSenadores = limiteSenadores;
+        this.limiteDeputadosFederais = limiteDeputadosFederais;
+        this.limiteDeputadosEstaduais = limiteDeputadosEstaduais;
         this.candidatos = new ArrayList<>();
-        this.maxSenadores = maxSenadores;
-        this.maxDepFederais = maxDepFederais;
-        this.maxDepEstaduais = maxDepEstaduais;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public boolean adicionarCandidato(Candidato candidato) {
         switch (candidato.getCargo().toLowerCase()) {
-            case "presidente":
-                if (quantidadePorCargo("presidente") < MAX_PRESIDENTE) {
-                    candidatos.add(candidato);
-                    return true;
-                }
-                break;
-            case "governador":
-                if (quantidadePorCargo("governador") < MAX_GOVERNADOR) {
-                    candidatos.add(candidato);
-                    return true;
-                }
-                break;
             case "senador":
-                if (quantidadePorCargo("senador") < maxSenadores) {
+                if (getNumCandidatosPorCargo("senador") < limiteSenadores) {
                     candidatos.add(candidato);
                     return true;
                 }
                 break;
             case "deputado federal":
-                if (quantidadePorCargo("deputado federal") < maxDepFederais) {
+                if (getNumCandidatosPorCargo("deputado federal") < limiteDeputadosFederais) {
                     candidatos.add(candidato);
                     return true;
                 }
                 break;
             case "deputado estadual":
-                if (quantidadePorCargo("deputado estadual") < maxDepEstaduais) {
+                if (getNumCandidatosPorCargo("deputado estadual") < limiteDeputadosEstaduais) {
+                    candidatos.add(candidato);
+                    return true;
+                }
+                break;
+            case "governador":
+                if (getNumCandidatosPorCargo("governador") == 0) {
+                    candidatos.add(candidato);
+                    return true;
+                }
+                break;
+            case "presidente":
+                if (getNumCandidatosPorCargo("presidente") == 0) {
                     candidatos.add(candidato);
                     return true;
                 }
                 break;
         }
-        return false;
+        return false; // Limite atingido ou cargo já ocupado
     }
 
-    private int quantidadePorCargo(String cargo) {
+    private int getNumCandidatosPorCargo(String cargo) {
         int count = 0;
-        for (Candidato candidato : candidatos) {
-            if (candidato.getCargo().equalsIgnoreCase(cargo)) {
+        for (Candidato c : candidatos) {
+            if (c.getCargo().equalsIgnoreCase(cargo)) {
                 count++;
             }
         }

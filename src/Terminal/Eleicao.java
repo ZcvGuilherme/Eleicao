@@ -3,20 +3,11 @@ package Terminal;
 public class Eleicao {
     private String id;
     private int duracao;
-    private int numEleitores;
 
-    public Eleicao(String id, int duracao, int numEleitores) {
+    public Eleicao(String id, int duracao) {
         this.id = id;
         this.duracao = duracao;
-        this.numEleitores = numEleitores;
     }
 
-    @Override
-    public String toString() {
-        return "Eleição{" +
-                "id='" + id + '\'' +
-                ", duracao=" + duracao +
-                ", numEleitores=" + numEleitores +
-                '}';
-    }
+    // Adicione métodos relevantes aqui, como getters e lógica para a eleição
 }

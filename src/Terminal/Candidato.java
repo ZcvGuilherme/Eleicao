@@ -19,11 +19,6 @@ public class Candidato {
 
     @Override
     public String toString() {
-        return "Candidato{" +
-                "nome='" + nome + '\'' +
-                ", partido='" + partido + '\'' +
-                ", numero=" + numero +
-                ", cargo='" + cargo + '\'' +
-                '}';
+        return "Candidato: " + nome + ", Partido: " + partido + ", Número: " + numero + ", Cargo: " + cargo;
     }
 }
