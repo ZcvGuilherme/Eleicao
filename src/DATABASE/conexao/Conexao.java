@@ -1,4 +1,4 @@
-package conexao;
+package DATABASE.conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,8 +25,5 @@ public class Conexao {
             e.printStackTrace();
             return null;
         }
-    }
-    public static void main(String[] args) {
-        getConexao();
     }
 }

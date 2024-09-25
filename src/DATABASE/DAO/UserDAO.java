@@ -1,7 +1,7 @@
-package DAO;
+package DATABASE.DAO;
 
-import conexao.Conexao;
-import entidade.Candidato;
+import DATABASE.conexao.Conexao;
+import DATABASE.entidade.Candidato;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

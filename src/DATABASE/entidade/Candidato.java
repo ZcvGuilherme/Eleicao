@@ -1,12 +1,19 @@
-package entidade;
+package DATABASE.entidade;
 
 public class Candidato {
     private String nome;
     private int numero;
     private String cargo;
     private String partido;
-    private int votos = 0;
+    private int votos;
+    //CONSTRUTOR
+    public Candidato(String nome, int numero, String cargo, String partido){
+        this.nome = nome;
+        this.numero = numero;
+        this.cargo = cargo;
+        this.partido = partido;
 
+    }
     //NOME DO CANDIDATO
     public String getNome(){
         return nome;
@@ -48,6 +55,6 @@ public class Candidato {
         return votos;
     }
     public void AddVoto(){
-        this.votos =  votos + 1;
+        this.votos += 1;
     }
 }
