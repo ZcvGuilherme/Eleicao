@@ -1,3 +1,4 @@
+package DATABASE;
 
 import DATABASE.DAO.UserDAO;
 import DATABASE.entidade.Candidato;

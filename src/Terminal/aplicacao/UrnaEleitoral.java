@@ -1,6 +1,6 @@
-package aplicacao;
+package Terminal.aplicacao;
 
-import servico.EleicaoServico;
+import Terminal.servico.EleicaoServico;
 
 public class UrnaEleitoral {
 

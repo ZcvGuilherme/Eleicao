@@ -1,4 +1,4 @@
-package modelo;
+package Terminal.modelo;
 
 import java.util.ArrayList;
 

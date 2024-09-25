@@ -1,4 +1,4 @@
-package modelo;
+package Terminal.modelo;
 
 public class Candidato {
     private String nome;

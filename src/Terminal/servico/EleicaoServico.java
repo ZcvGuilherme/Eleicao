@@ -1,8 +1,8 @@
-package servico;
+package Terminal.servico;
 
-import modelo.Candidato;
-import modelo.Eleicao;
-import modelo.Partido;
+import Terminal.modelo.Candidato;
+import Terminal.modelo.Eleicao;
+import Terminal.modelo.Partido;
 
 import java.util.Scanner;
 
