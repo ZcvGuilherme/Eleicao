@@ -1,5 +1,5 @@
-package Terminal;
-import Terminal.cadastro.Candidato;
+package Terminal.Menu;
+
 import Terminal.cadastro.Partido;
 import Terminal.utili.utilitaveis;
 import java.util.ArrayList;
@@ -20,23 +20,7 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
 
-    private void cadastrarPresidente(Partido partido) {
-        utilitaveis.limpaTela();
-        System.out.print("Digite o nome do presidente: ");
-        String nomePresidente = scanner.nextLine();
-        System.out.print("Digite o número do presidente: ");
-        int numeroPresidente = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer
-        
-        Candidato presidente = new Candidato(nomePresidente, partido.getNome(), numeroPresidente, "presidente");
-        if (partido.adicionarCandidato(presidente)) {
-            System.out.println("Presidente cadastrado com sucesso!");
-        } else {
-            System.out.println("Erro ao cadastrar presidente. Já existe um candidato para este cargo.");
-        }
-
-    }
-
+    
 
     private void cadastrarGovernador(Partido partido) {
         utilitaveis.limpaTela();
@@ -46,12 +30,8 @@ public class Menu {
         int numeroGovernador = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
 
-        Candidato governador = new Candidato(nomeGovernador, partido.getNome(), numeroGovernador, "governador");
-        if (partido.adicionarCandidato(governador)) {
-            System.out.println("Governador cadastrado com sucesso!");
-        } else {
-            System.out.println("Erro ao cadastrar governador. Já existe um candidato para este cargo.");
-        }
+      
+        
     }
     /*
      * outra sugestao:
@@ -80,13 +60,8 @@ public class Menu {
             int numeroCandidato = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
 
-            Candidato candidato = new Candidato(nomeCandidato, partido.getNome(), numeroCandidato, cargo);
 
-            if (partido.adicionarCandidato(candidato)) {
-                System.out.println("Candidato " + nomeCandidato + " cadastrado com sucesso!");
-            } else {
-                System.out.println("Erro ao cadastrar candidato. Limite de candidatos atingido para este cargo.");
-            }
+            
 
             System.out.print("Deseja cadastrar outro candidato? (s/n): ");
             String resposta = scanner.nextLine();
@@ -113,7 +88,7 @@ public class Menu {
         System.out.println("Partido " + nomePartido + " cadastrado com sucesso!");
 
         // Cadastro de presidente
-        cadastrarPresidente(partido);
+
         
         // Cadastro de governador
         cadastrarGovernador(partido);

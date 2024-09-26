@@ -1,7 +1,7 @@
 package Terminal.cadastro;
 import java.util.ArrayList;
 import java.util.List;
-
+import DATABASE.entidade.Candidato;
 public class Partido {
     private String nome;
     private int limiteSenadores;
