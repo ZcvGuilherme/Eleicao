@@ -1,4 +1,4 @@
-package Terminal;
+package Terminal.cadastro;
 
 public class Candidato {
     private String nome;

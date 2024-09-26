@@ -1,5 +1,7 @@
 package Terminal;
-
+import Terminal.cadastro.Candidato;
+import Terminal.cadastro.Partido;
+import Terminal.utili.utilitaveis;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,25 +20,14 @@ public class Menu {
         this.scanner = new Scanner(System.in);
     }
 
-    private void limpaTela() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        /*
-         * muito bom, mas está acontecendo um problema durante o codigo, que é q eu nao consigo ver a ultima msg, como a de que foi cadastrado...
-         */
-    }
-
     private void cadastrarPresidente(Partido partido) {
-        limpaTela();
+        utilitaveis.limpaTela();
         System.out.print("Digite o nome do presidente: ");
         String nomePresidente = scanner.nextLine();
         System.out.print("Digite o número do presidente: ");
         int numeroPresidente = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
-        /*
-         * esse if... se vc so consegue cadastrar um presidente por vez, qual a necessidade dele?
-         * outra coisa, uma coisa que deveria ser gerenciada: e se eu colocar o mesmo numero do anterior?
-         */
+        
         Candidato presidente = new Candidato(nomePresidente, partido.getNome(), numeroPresidente, "presidente");
         if (partido.adicionarCandidato(presidente)) {
             System.out.println("Presidente cadastrado com sucesso!");
@@ -46,8 +37,9 @@ public class Menu {
 
     }
 
+
     private void cadastrarGovernador(Partido partido) {
-        limpaTela();
+        utilitaveis.limpaTela();
         System.out.print("Digite o nome do governador: ");
         String nomeGovernador = scanner.nextLine();
         System.out.print("Digite o número do governador: ");
@@ -75,7 +67,7 @@ public class Menu {
      */
     private void cadastrarCandidato(Partido partido) {
         while (true) {
-            limpaTela();
+            utilitaveis.limpaTela();
             System.out.print("Digite o cargo do candidato (senador, deputado federal, deputado estadual) ou 'sair' para encerrar: ");
             String cargo = scanner.nextLine();
             if (cargo.equalsIgnoreCase("sair")) {
@@ -105,7 +97,7 @@ public class Menu {
     }
 
     private void cadastrarPartido() {
-        limpaTela();
+        utilitaveis.limpaTela();
         System.out.print("Digite o nome do partido: ");
         String nomePartido = scanner.nextLine();
         System.out.print("Quantos senadores haverá no partido? ");
@@ -149,7 +141,7 @@ public class Menu {
         String menu = "1 - Cadastrar Partido\n2 - Cadastrar Eleição\n3 - Iniciar Eleição\n4 - Sair\n";
 
         while (true) {
-            limpaTela();
+            utilitaveis.limpaTela();
             System.out.println(menu);
             System.out.print("Digite uma opção: ");
             int opcao = scanner.nextInt();
