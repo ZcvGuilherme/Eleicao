@@ -1,4 +1,4 @@
-package Terminal;
+package Terminal.cadastro;
 
 public class Eleicao {
     private String id;

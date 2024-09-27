@@ -1,14 +1,13 @@
-package Terminal;
-
+package Terminal.cadastro;
+import DATABASE.entidade.Candidato;
 import java.util.ArrayList;
 import java.util.List;
-
 public class Partido {
-    private String nome;
-    private int limiteSenadores;
-    private int limiteDeputadosFederais;
-    private int limiteDeputadosEstaduais;
-    private List<Candidato> candidatos;
+    private final String nome;
+    private final int limiteSenadores;
+    private final int limiteDeputadosFederais;
+    private final int limiteDeputadosEstaduais;
+    private final List<Candidato> candidatos;
 
     public Partido(String nome, int limiteSenadores, int limiteDeputadosFederais, int limiteDeputadosEstaduais) {
         this.nome = nome;
