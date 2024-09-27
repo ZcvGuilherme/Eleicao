@@ -2,10 +2,10 @@ package DATABASE.DAO;
 
 import DATABASE.conexao.Conexao;
 import DATABASE.entidade.Candidato;
+import Terminal.utili.utilitaveis;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 public class UserDAO {
     public void cadastrarCandidato(Candidato candidato){
 
@@ -27,7 +27,7 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
-    public void ver_candidatos(Candidato candidato){
+    public void ver_candidatos(String partido){
         String view = "select * from candidatos where partido = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -35,22 +35,22 @@ public class UserDAO {
         try {
             stmt = Conexao.getConexao().prepareStatement(view);
 
-            stmt.setString(1, candidato.getPartido());
+            stmt.setString(1, partido);
            
             rs = stmt.executeQuery();
-            System.out.println("Candidatos do partido " + candidato.getPartido());
+            String txt = String.format("Candidatos do partido %s: \nnumero | nome | cargo", partido);
+            utilitaveis.SlowPrint(txt, 60);
             while (rs.next()) {
                 // Exemplo de como acessar os dados retornados
                 int numero = rs.getInt("numero");
                 String nome = rs.getString("nome");
                 String cargo = rs.getString("cargo");
-                String partido = rs.getString("partido"); // Substitua "id" pelo nome da coluna real
                 /*
                  * numero | nome | Presidente | Partido
                  */
                  // Substitua "nome" pelo nome da coluna real
-                String texto = String.format("%d | %s | %s \n",partido,  numero, nome, cargo);
-                System.out.println(texto);
+                String texto = String.format(" %d | %s | %s \n", numero, nome, cargo);
+                utilitaveis.SlowPrint(texto, 40);
             }
             
         } catch (SQLException e) {

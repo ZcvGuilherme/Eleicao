@@ -22,6 +22,7 @@ public class MainCadastro {
 
 
     public void SenxDep(String nomePartido, String cargoP, String cargoS, int numMax){
+        utilitaveis.limpaTela();
         String vari = String.format("Quantos %s são? (1 - %d)", cargoP, numMax);
         String vari2 = String.format("Digite o nome do %s: ", cargoS);
         String vari3 = String.format("Digite o numero do %s: ", cargoS);
@@ -41,7 +42,7 @@ public class MainCadastro {
             utilitaveis.SlowPrint(vari3, 30);
             int numSen = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
-            CadastroCandidato.cadastrarCandidato(nomeSen, numSen, "Senador", nomePartido);    
+            CadastroCandidato.cadastrarCandidato(nomeSen, numSen, cargoS, nomePartido);    
         }
     }
 }

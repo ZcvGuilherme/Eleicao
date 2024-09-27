@@ -1,4 +1,5 @@
 package Terminal;
+import DATABASE.DAO.UserDAO;
 import Terminal.cadastro.MainCadastro;
 import Terminal.utili.utilitaveis;
 import java.util.Scanner;
@@ -33,7 +34,10 @@ public class Main {
                 deputadosE.SenxDep(nomePartido, "Deputados Estaduais", "Deputado Estadual", 5);
                 break;
             case 2:
-                
+                utilitaveis.SlowPrint("Qual Partido você deseja ver? ", opcao);
+                String pergunta = scanner.nextLine();
+                new UserDAO().ver_candidatos(pergunta);
+                scanner.nextLine();
                 break;
             case 3:
                 // Aqui você pode implementar o cadastro de eleição

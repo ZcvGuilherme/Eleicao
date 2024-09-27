@@ -14,10 +14,10 @@ public class Conexao {
         try{
             if (conn == null){
                 conn = DriverManager.getConnection(url, user, senha);
-                System.out.println("Conexão feita com sucesso!");
+ 
                 return conn;
             } else {
-                System.out.println("Conexão feita com sucesso!");
+
                 return conn;
             }
         } catch (SQLException e) {
