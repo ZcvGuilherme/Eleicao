@@ -21,8 +21,6 @@ public class Candidato {
     public void setNome(String nome){
         this.nome =  nome;
     }
-
-
     //NUMERO DO CANDIDATO
     public int getNum(){
         return numero;
@@ -56,5 +54,10 @@ public class Candidato {
     }
     public void AddVoto(){
         this.votos += 1;
+    }
+    
+    @Override
+    public String toString(){
+        return String.format("%d | %s | %s | %s", numero, nome, cargo, partido);
     }
 }

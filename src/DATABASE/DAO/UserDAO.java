@@ -2,10 +2,11 @@ package DATABASE.DAO;
 
 import DATABASE.conexao.Conexao;
 import DATABASE.entidade.Candidato;
-import Terminal.utili.utilitaveis;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 public class UserDAO {
     public void cadastrarCandidato(Candidato candidato){
 
@@ -27,36 +28,60 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
-    public void ver_candidatos(String partido){
+    public List<Candidato> ver_candidatos(String partido){
         String view = "select * from candidatos where partido = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        List<Candidato> listaCandidatos = new ArrayList<>();
         try {
             stmt = Conexao.getConexao().prepareStatement(view);
 
             stmt.setString(1, partido);
            
             rs = stmt.executeQuery();
-            String txt = String.format("Candidatos do partido %s: \nnumero | nome | cargo", partido);
-            utilitaveis.SlowPrint(txt, 60);
+    
             while (rs.next()) {
                 // Exemplo de como acessar os dados retornados
                 int numero = rs.getInt("numero");
                 String nome = rs.getString("nome");
                 String cargo = rs.getString("cargo");
-                /*
-                 * numero | nome | Presidente | Partido
-                 */
-                 // Substitua "nome" pelo nome da coluna real
-                String texto = String.format(" %d | %s | %s \n", numero, nome, cargo);
-                utilitaveis.SlowPrint(texto, 40);
+
+                Candidato candidato = new Candidato(nome, numero, cargo, partido);
+                listaCandidatos.add(candidato);
             }
             
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
 
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return listaCandidatos;
+    }
+    public void EleicaoBD(int idEleicao, int duracaoMinutos){
+        String ec = "INSERT INTO eleicoes (idEleicao, timeEleicao) VALUES (?, ?)";
+        PreparedStatement ez = null;
+        try {
+            ez = Conexao.getConexao().prepareStatement(ec);
+            ez.setInt(1, idEleicao);
+            ez.setInt(2, duracaoMinutos);
+  
+            //ps.setString(1, usuario.getUser());
+            ez.execute();
+            ez.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
     }
+    
 }
+
+
+//String texto = String.format(" %d | %s | %s \n", numero, nome, cargo);

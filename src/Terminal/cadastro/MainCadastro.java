@@ -4,7 +4,7 @@ import Terminal.utili.utilitaveis;
 import java.util.Scanner;
 public class MainCadastro {
     Scanner scanner = new Scanner(System.in);
-
+    AcessEleicoes CEOF = new AcessEleicoes();
     public void menuCadastro(String nomePartido, String cargo){
         String texto1 = String.format("Digite o nome do %s: " , cargo);
         utilitaveis.limpaTela();
@@ -16,7 +16,7 @@ public class MainCadastro {
         utilitaveis.SlowPrint(texto2, 30);
         int num = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
-        CadastroCandidato.cadastrarCandidato(nome, num, cargo, nomePartido);
+        AcessCanditatos.cadastrarCandidato(nome, num, cargo, nomePartido);
         }
 
 
@@ -42,7 +42,17 @@ public class MainCadastro {
             utilitaveis.SlowPrint(vari3, 30);
             int numSen = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
-            CadastroCandidato.cadastrarCandidato(nomeSen, numSen, cargoS, nomePartido);    
+            AcessCanditatos.cadastrarCandidato(nomeSen, numSen, cargoS, nomePartido);    
         }
+    }
+    public void MenuEleicao(){
+        utilitaveis.limpaTela();
+        utilitaveis.SlowPrint("Digite o id da eleição: ", 50);
+        int idEleicao = scanner.nextInt();
+        scanner.nextLine();
+        utilitaveis.SlowPrint("Digite o tempo da eleição (min): ", 50);
+        int tempoEleicao = scanner.nextInt();
+        scanner.nextLine();
+        CEOF.cadastrarEleicao(idEleicao, tempoEleicao);
     }
 }

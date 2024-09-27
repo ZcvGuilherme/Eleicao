@@ -8,8 +8,8 @@ public class Conexao {
     private static final String url = "jdbc:mysql://localhost:3306/sessao_urna";
     private static final String user = "root";
     private static final String senha = "Cv271#$x";
-
     private static Connection conn;
+    
     public static Connection getConexao(){
         try{
             if (conn == null){
