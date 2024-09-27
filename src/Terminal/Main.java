@@ -1,5 +1,6 @@
 package Terminal;
 import DATABASE.DAO.UserDAO;
+import Terminal.cadastro.Eleicao;
 import Terminal.cadastro.MainCadastro;
 import Terminal.utili.utilitaveis;
 import java.util.Scanner;
@@ -40,7 +41,9 @@ public class Main {
                 scanner.nextLine();
                 break;
             case 3:
-                // Aqui você pode implementar o cadastro de eleição
+                utilitaveis.limpaTela();
+                Eleicao eleicao = Eleicao.cadastrarEleicao(scanner); // Passa o scanner para o método
+                // Aqui você pode armazenar a eleição cadastrada em uma lista ou base de dados, se necessário
                 break;
             case 4:
             // Aqui você pode implementar a lógica para iniciar a eleição
