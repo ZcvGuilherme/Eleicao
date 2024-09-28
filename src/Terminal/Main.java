@@ -1,5 +1,6 @@
 package Terminal;
 import Terminal.cadastro.AcessCanditatos;
+import Terminal.cadastro.AcessEleicoes;
 import Terminal.cadastro.MainCadastro;
 import Terminal.utili.utilitaveis;
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class Main {
         MainCadastro deputadosE = new MainCadastro();
         MainCadastro EleicaoOFICIAL = new MainCadastro();
 
-        String menu = "1 - Cadastrar Partido\n2 - Ver Partidos\n3 - Cadastrar Eleição\n4 - Iniciar Eleição\n5 - Sair\n";
+        String menu = "1 - Cadastrar Partido\n2 - Ver Partidos\n3 - Cadastrar Eleição\n4 - Ver Eleições\n5 - Iniciar Eleição\n6 - Sair\n";
         Scanner scanner = new Scanner(System.in);
         while (true) {
         utilitaveis.limpaTela();
@@ -41,15 +42,21 @@ public class Main {
                 scanner.nextLine();
                 break;
             case 3:
+                utilitaveis.limpaTela();
                 EleicaoOFICIAL.MenuEleicao();
                 break;
             case 4:
-            // Aqui você pode implementar a lógica para iniciar a eleição
+                utilitaveis.limpaTela();
+                new AcessEleicoes().exibirEleicoes();
+                scanner.nextLine();
                 break;
             case 5:
-                System.out.println("Saindo...");
-                scanner.close();
-                return; // Sai do loop e finaliza o programa
+
+                break;
+            case 6:
+            System.out.println("Saindo...");
+            scanner.close();
+            return; // Sai do loop e finaliza o programa
             default:
                 System.out.println("Opção inválida. Tente novamente.");
             }

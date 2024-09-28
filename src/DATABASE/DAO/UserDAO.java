@@ -80,8 +80,38 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
+
+
+
+    public List<int[]> listarEleicoes(){
+
+
+        String comm = "select * from eleicoes";
+        PreparedStatement statment = null;
+        ResultSet results = null;
+        List<int[]> eleicoes = new ArrayList<>();
+
+        try {
+            statment = Conexao.getConexao().prepareStatement(comm);
+            results = statment.executeQuery();
+            while (results.next()) { 
+                int idEleicao = results.getInt("idEleicao");
+                int timeEleicao = results.getInt("timeEleicao");
+                eleicoes.add(new int[]{idEleicao, timeEleicao});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (results != null) results.close();
+                if (statment != null) statment.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return  eleicoes;
+    }
     
 }
 
 
-//String texto = String.format(" %d | %s | %s \n", numero, nome, cargo);

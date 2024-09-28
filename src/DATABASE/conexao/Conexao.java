@@ -17,7 +17,6 @@ public class Conexao {
  
                 return conn;
             } else {
-
                 return conn;
             }
         } catch (SQLException e) {
