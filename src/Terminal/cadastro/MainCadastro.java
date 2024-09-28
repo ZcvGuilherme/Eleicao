@@ -23,23 +23,27 @@ public class MainCadastro {
 
     public void SenxDep(String nomePartido, String cargoP, String cargoS, int numMax){
         utilitaveis.limpaTela();
-        String vari = String.format("Quantos %s são? (1 - %d)", cargoP, numMax);
-        String vari2 = String.format("Digite o nome do %s: ", cargoS);
-        String vari3 = String.format("Digite o numero do %s: ", cargoS);
-        utilitaveis.SlowPrint(vari, 30);
+        String promptQuant = String.format("Quantos %s são? (1 - %d)", cargoP, numMax);
+        String promptNome = String.format("Digite o nome do %s: ", cargoS);
+        String promptNumero = String.format("Digite o numero do %s: ", cargoS);
+
+        
+        utilitaveis.SlowPrint(promptQuant, 30);
         int quant = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
         if (quant > numMax){
-            quant = 3;
-        } else if (quant < numMax){
+            quant = numMax;
+        } else if (quant < 1){
             quant = 1;
         }
+
+        
         for (int i = 1; i <= quant; i++){
             utilitaveis.limpaTela();
-            utilitaveis.SlowPrint(vari2, 30);
+            utilitaveis.SlowPrint(promptNome, 30);
             String nomeSen = scanner.nextLine();
             utilitaveis.limpaTela();
-            utilitaveis.SlowPrint(vari3, 30);
+            utilitaveis.SlowPrint(promptNumero, 30);
             int numSen = scanner.nextInt();
             scanner.nextLine(); // Limpa o buffer
             AcessCanditatos.cadastrarCandidato(nomeSen, numSen, cargoS, nomePartido);    

@@ -32,7 +32,7 @@ public class Main {
                 governador.menuCadastro(nomePartido, "Governador");
                 //-----------------------------------------------------------------------------------\\
                 senadores.SenxDep(nomePartido, "Senadores", "Senador", 3);
-                deputadosF.SenxDep(nomePartido, "Deputados Federais", "Deputado Estadual", 5);
+                deputadosF.SenxDep(nomePartido, "Deputados Federais", "Deputado Federal", 5);
                 deputadosE.SenxDep(nomePartido, "Deputados Estaduais", "Deputado Estadual", 5);
                 break;
             case 2:
