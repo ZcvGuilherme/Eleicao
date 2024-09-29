@@ -9,6 +9,7 @@ public class AcessCanditatos {
         Candidato candidato = new Candidato(nome, numero, cargo, partido);
         new UserDAO().cadastrarCandidato(candidato);
     }
+    
     public static void manageDB(String partido){
         utilitaveis.limpaTela();
         UserDAO dao = new UserDAO();
