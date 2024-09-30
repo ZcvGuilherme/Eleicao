@@ -12,7 +12,6 @@ public class Candidato {
         this.numero = numero;
         this.cargo = cargo;
         this.partido = partido;
-
     }
     //NOME DO CANDIDATO
     public String getNome(){
@@ -28,8 +27,6 @@ public class Candidato {
     public void setNumero(int numero){
         this.numero =  numero;
     }
-
-
     //Cargo DO CANDIDATO
     public String getCargo(){
         return cargo;
@@ -37,8 +34,6 @@ public class Candidato {
     public void setCargo(String cargo){
         this.cargo =  cargo;
     }
-
-
     //Partido DO CANDIDATO
     public String getPartido(){
         return partido;

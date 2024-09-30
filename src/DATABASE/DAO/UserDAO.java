@@ -81,8 +81,6 @@ public class UserDAO {
         }
     }
 
-
-
     public List<int[]> listarEleicoes(){
 
 
