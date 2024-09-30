@@ -3,7 +3,7 @@ package GUI;
 import java.awt.*;
 import javax.swing.*;
 
-public class TelaVota {
+public class teste {
     
     public static void main(String[] args) {
         JFrame frame = new JFrame("Urna");
@@ -64,5 +64,3 @@ public class TelaVota {
         BotaoConfirma.setFont(fontbotaotxt);
     }
 }
-
-

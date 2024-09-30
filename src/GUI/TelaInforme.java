@@ -1,8 +1,8 @@
 package GUI;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.*;
 
 public class TelaInforme {
         public static void main(String[] args) {
@@ -17,17 +17,18 @@ public class TelaInforme {
         JTextField txtCPF = new JTextField(20);
 
         /* Botão para informações */
-        JButton botaoAtualizar = new JButton("Atualizar");
         JButton botaoConfirmar = new JButton("Confirmar");
 
         /* Label para exibir as informações */
         // Nome
         JLabel labelNome = new JLabel(" ");
+        JLabel labelNomeLegenda = new JLabel("Nome: ");
         // CPF
         JLabel labelCPF = new JLabel(" ");
+        JLabel labelCPFLegenda = new JLabel("CPF: ");
 
         /* Adiciona um ActionListener ao botão */
-        botaoAtualizar.addActionListener(new ActionListener() {
+        botaoConfirmar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String inputnome = txtNome.getText();
@@ -41,20 +42,22 @@ public class TelaInforme {
         // Cria um painel, adiciona os componentes e define layout nulo
         JPanel panel = new JPanel();
         // Posição
-        txtNome.setBounds(50, 50, 200, 30);
-        txtCPF.setBounds(50, 100, 200, 30);
-        botaoAtualizar.setBounds(50, 150, 100, 30);
-        botaoConfirmar.setBounds(160, 150, 100, 30);
-        labelNome.setBounds(50, 200, 300, 30);
-        labelCPF.setBounds(50, 250, 300, 30);
+        txtNome.setBounds(600, 150, 200, 30);
+        txtCPF.setBounds(600, 200, 200, 30);
+        botaoConfirmar.setBounds(720, 250, 100, 30);
+        labelNome.setBounds(600, 350, 350, 30);
+        labelCPF.setBounds(600, 400, 400, 30);
+        labelNomeLegenda.setBounds(500, 150, 200, 30);
+        labelCPFLegenda.setBounds(500, 200, 200, 30);
         // Adicionar os botões
         panel.setLayout(null);
         panel.add(txtNome);
         panel.add(txtCPF);
-        panel.add(botaoAtualizar);
         panel.add(botaoConfirmar);
         panel.add(labelNome);
         panel.add(labelCPF);
+        panel.add(labelNomeLegenda);
+        panel.add(labelCPFLegenda);
 
         frame.getContentPane().add(panel);
         frame.setVisible(true);
