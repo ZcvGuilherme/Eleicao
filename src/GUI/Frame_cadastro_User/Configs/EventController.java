@@ -1,10 +1,13 @@
-package GUI.Frame_cadastro_User;
+package GUI.Frame_cadastro_User.Configs;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+
+import DATABASE.entidade.User;
+import GUI.Frame_cadastro_User.Tela.Viewer;
 public class EventController {
     private Viewer view;
     private User user;

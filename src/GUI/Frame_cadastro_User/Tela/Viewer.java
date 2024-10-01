@@ -1,4 +1,5 @@
-package GUI.Frame_cadastro_User;
+package GUI.Frame_cadastro_User.Tela;
+import GUI.Frame_cadastro_User.Configs.Placeholder;
 import java.awt.Font;
 import javax.swing.*;
 public class Viewer {

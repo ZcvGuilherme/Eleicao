@@ -1,4 +1,6 @@
-package GUI.Frame_cadastro_User;
+package GUI.Frame_cadastro_User.Tela;
+
+import GUI.Frame_cadastro_User.Configs.EventController;
 
 public class Starter {
     public static void venha(){

@@ -1,4 +1,4 @@
-package GUI.Frame_cadastro_User;
+package DATABASE.entidade;
 
 public class User {
     private int id;
