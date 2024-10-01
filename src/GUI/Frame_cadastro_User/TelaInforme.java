@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Frame_cadastro_User;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,8 +7,9 @@ import javax.swing.*;
 public class TelaInforme {
         public static void main(String[] args) {
         JFrame frame = new JFrame("Tela Inicial");
+        frame.setSize(100, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setLocation(50, 100);
 
         /* Campo de texto para entrada de informações */
         // Nome

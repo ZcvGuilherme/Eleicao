@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Frame_Urna;
 
 import java.awt.*;
 import javax.swing.*;
