@@ -5,7 +5,6 @@ import Terminal.cadastro.MainCadastro;
 import Terminal.utili.utilitaveis;
 import java.util.Scanner;
 public class Main {
-
     public static void main(String[] args) {
         MainCadastro presidente = new MainCadastro();
         MainCadastro governador = new MainCadastro();
@@ -51,7 +50,6 @@ public class Main {
                 scanner.nextLine();
                 break;
             case 5:
-            
                 break;
             case 6:
             System.out.println("Saindo...");

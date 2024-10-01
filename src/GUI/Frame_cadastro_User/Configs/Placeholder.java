@@ -1,4 +1,4 @@
-package GUI.Frame_cadastro_User;
+package GUI.Frame_cadastro_User.Configs;
 
 import java.awt.Color;
 import java.awt.event.FocusAdapter;

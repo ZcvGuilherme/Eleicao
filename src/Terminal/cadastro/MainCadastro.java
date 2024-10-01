@@ -12,14 +12,12 @@ public class MainCadastro {
         utilitaveis.SlowPrint(texto1, 30);
         String nome = scanner.nextLine();
         utilitaveis.limpaTela();
-        
+
         utilitaveis.SlowPrint(texto2, 30);
         int num = scanner.nextInt();
         scanner.nextLine(); // Limpa o buffer
         AcessCanditatos.cadastrarCandidato(nome, num, cargo, nomePartido);
         }
-
-
 
     public void SenxDep(String nomePartido, String cargoP, String cargoS, int numMax){
         utilitaveis.limpaTela();
@@ -37,7 +35,6 @@ public class MainCadastro {
             quant = 1;
         }
 
-        
         for (int i = 1; i <= quant; i++){
             utilitaveis.limpaTela();
             utilitaveis.SlowPrint(promptNome, 30);
@@ -59,4 +56,6 @@ public class MainCadastro {
         scanner.nextLine();
         CEOF.cadastrarEleicao(idEleicao, tempoEleicao);
     }
+
+
 }

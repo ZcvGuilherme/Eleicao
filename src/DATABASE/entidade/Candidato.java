@@ -41,8 +41,6 @@ public class Candidato {
     public void setPartido(String partido){
         this.partido =  partido;
     }
-
-    
     //NOME DO CANDIDATO
     public int getvotos(){
         return votos;
