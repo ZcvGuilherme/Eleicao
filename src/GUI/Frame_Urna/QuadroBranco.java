@@ -1,15 +1,14 @@
 package GUI.Frame_Urna;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
+public class QuadroBranco {
 
-class QuadroBranco implements CriadorComponentes {
-    @Override
-    public void criadorComponentes(JPanel panel) {
+    public static void adicionarAoPanel(JPanel panel, int x, int y, int largura, int altura) {
         JPanel quadroBranco = new JPanel();
         quadroBranco.setBackground(Color.WHITE);
-        quadroBranco.setBounds(50, 50, 700, 600);
+        quadroBranco.setBounds(x, y, largura, altura);
         panel.add(quadroBranco);
     }
 }
