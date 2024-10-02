@@ -1,9 +1,10 @@
 package GUI;
 
+import GUI.Eleicao.Separador;
 import GUI.Frame_cadastro_User.Tela.Starter;
-
 public class Main_Urna {
     public static void main(String[] args) {
+        Separador.printEleicao();
         /*
          * Inicia conexão com a rede
          * -------------------------
@@ -13,6 +14,5 @@ public class Main_Urna {
          * terminou os votos, finaliza
          */
         Starter.venha();
-
     }
 }
