@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.io.IOException;
 
 public class Receptor {
-    private Cliente cliente;
+    private final Cliente cliente;
 
     public Receptor(Cliente cliente) {
         this.cliente = cliente;

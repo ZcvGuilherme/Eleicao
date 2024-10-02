@@ -4,18 +4,16 @@ import Terminal.utili.utilitaveis;
 import java.util.List;
 public class AcessEleicoes {
     UserDAO dao = new UserDAO();
-    public void cadastrarEleicao(int idEleicao, int duracaoMinutos) {
+    public void cadastrarEleicao(int duracaoMinutos) {
         // Criando uma nova eleição
-        String text1 = String.format("ID da Eleição: %d", idEleicao);
         String text2 = String.format("Duração: %d minutos.", duracaoMinutos);
-        dao.EleicaoBD(idEleicao, duracaoMinutos);
+        dao.EleicaoBD(duracaoMinutos);
         utilitaveis.SlowPrint("Eleição cadastrada com sucesso!", 50);
-        utilitaveis.SlowPrint(text1, 50);
         utilitaveis.SlowPrint(text2, 50);
     }
     public void exibirEleicoes(){
-        List<int[]> eleicoes = dao.listarEleicoes();
 
+        List<int[]> eleicoes = dao.listarEleicoes();
         System.out.println("ID Eleição | Tempo Eleição (min)");
         System.out.println("-------------------------------");
         for (int[] eleicao : eleicoes) {

@@ -4,6 +4,8 @@ import Terminal.cadastro.AcessEleicoes;
 import Terminal.cadastro.MainCadastro;
 import Terminal.utili.utilitaveis;
 import java.util.Scanner;
+
+import DATABASE.DAO.UserDAO;
 public class Main {
     public static void main(String[] args) {
         MainCadastro presidente = new MainCadastro();
@@ -13,7 +15,7 @@ public class Main {
         MainCadastro deputadosE = new MainCadastro();
         MainCadastro EleicaoOFICIAL = new MainCadastro();
 
-        String menu = "1 - Cadastrar Partido\n2 - Ver Partidos\n3 - Cadastrar Eleição\n4 - Ver Eleições\n5 - Iniciar Eleição\n6 - Sair\n";
+        String menu = "1 - Cadastrar Partido\n2 - Ver Partidos\n3 - Cadastrar Eleição\n4 - Ver Eleições\n5 - Cadastrar Eleitores\n6 - Iniciar Eleição\n7 - Sair\n";
         Scanner scanner = new Scanner(System.in);
         while (true) {
         utilitaveis.limpaTela();
@@ -35,7 +37,7 @@ public class Main {
                 deputadosE.SenxDep(nomePartido, "Deputados Estaduais", "Deputado Estadual", 5);
                 break;
             case 2:
-                utilitaveis.SlowPrint("Qual Partido você deseja ver? ", opcao);
+                utilitaveis.SlowPrint("Qual Partido você deseja ver? ", 30);
                 String pergunta = scanner.nextLine();
                 AcessCanditatos.manageDB(pergunta);
                 scanner.nextLine();
@@ -50,8 +52,18 @@ public class Main {
                 scanner.nextLine();
                 break;
             case 5:
+                utilitaveis.SlowPrint("Digite quantos eleitores serão cadastrados:", 30);
+                int quant = scanner.nextInt();
+                scanner.nextLine();
+                new UserDAO().add_eleitores(quant);
+                scanner.nextLine();
                 break;
             case 6:
+                System.out.println("Digite o id da eleição para começar: ");
+                scanner.nextInt();
+                
+                break;
+            case 7:
             System.out.println("Saindo...");
             scanner.close();
             return; // Sai do loop e finaliza o programa

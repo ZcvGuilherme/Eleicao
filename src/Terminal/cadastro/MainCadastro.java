@@ -48,13 +48,10 @@ public class MainCadastro {
     }
     public void MenuEleicao(){
         utilitaveis.limpaTela();
-        utilitaveis.SlowPrint("Digite o id da eleição: ", 50);
-        int idEleicao = scanner.nextInt();
-        scanner.nextLine();
         utilitaveis.SlowPrint("Digite o tempo da eleição (min): ", 50);
         int tempoEleicao = scanner.nextInt();
         scanner.nextLine();
-        CEOF.cadastrarEleicao(idEleicao, tempoEleicao);
+        CEOF.cadastrarEleicao(tempoEleicao);
     }
 
 

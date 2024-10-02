@@ -11,6 +11,8 @@ public class GraficoProporcional extends JPanel {
     private List<String> partidos = new ArrayList<>();
     private List<Integer> cadeiras = new ArrayList<>();
 
+    //
+
     public GraficoProporcional() {
         gerarTabela();
     }
