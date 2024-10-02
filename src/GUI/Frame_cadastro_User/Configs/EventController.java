@@ -1,13 +1,14 @@
 package GUI.Frame_cadastro_User.Configs;
 
+import DATABASE.entidade.User;
+import GUI.Frame_Urna.TelaVota;
+import GUI.Frame_cadastro_User.Tela.Viewer;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
-import DATABASE.entidade.User;
-import GUI.Frame_cadastro_User.Tela.Viewer;
 public class EventController {
     private Viewer view;
     private User user;
@@ -40,6 +41,12 @@ public class EventController {
 
                     // Atualiza os labels com os dados do usuário
                     view.getLabelID().setText("ID: " + user.getId());
+                    
+                    // Fechar janela -> Abrir janela
+                    view.getFrame().dispose();
+                    
+                    TelaVota.chama_urna();
+
                 } catch (NumberFormatException ex) {
                     // Se não for um número válido, exibe uma mensagem de erro
                     JOptionPane.showMessageDialog(view.getFrame(), "Por favor, insira um ID válido (número).", "Erro", JOptionPane.ERROR_MESSAGE);
