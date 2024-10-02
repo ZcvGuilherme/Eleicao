@@ -1,7 +1,7 @@
-package CONNECTION.Connection.Principal;
+package CONNECTION;
 
 import java.io.IOException;
-
+import CONNECTION.Servidor.Servidor;
 public class MainServidor {
     public static void main(String[] args) throws IOException {
         Servidor servidor = new Servidor();

@@ -1,4 +1,4 @@
-package CONNECTION.Connection.Principal;
+package CONNECTION.Servidor;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,7 +1,8 @@
-package CONNECTION.Connection.Principal;
+package CONNECTION;
 
 import java.io.IOException;
-
+import CONNECTION.Cliente.Cliente;
+import CONNECTION.Cliente.Receptor;
 public class MainCliente {
 
     public static void main(String[] args) throws IOException {

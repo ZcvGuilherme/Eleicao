@@ -1,4 +1,4 @@
-package CONNECTION.Connection.Principal;
+package CONNECTION.Cliente;
 
 import java.util.Scanner;
 import java.io.IOException;
