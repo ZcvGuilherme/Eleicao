@@ -13,14 +13,16 @@ public class QuadroBranco {
         quadroBranco.setLayout(null); // Usar layout nulo para posicionamento manual
 
         // Cria e adiciona os componentes (texto e campo de texto)
-        JLabel textoLabelCargo = CriadorComponentes.criarLabel("Cargo", 100, 30, 400, 80);
+        JLabel textoLabelCargo = CriadorComponentes.criarLabel("Cargo", 250, 30, 400, 80);
         JLabel textoLabelNome = CriadorComponentes.criarLabel("Nome:", 50, 300, 400, 80);
         JLabel textoLabelPartido = CriadorComponentes.criarLabel("Partido:", 50, 400, 400, 80);
-        JTextField campoTexto = CriadorComponentes.criarTextField(100, 150, 200, 50);
+        JLabel textoLabelNumero = CriadorComponentes.criarLabel("Numero:", 50, 150, 400, 80);
+        JTextField campoTexto = CriadorComponentes.criarTextField(280, 170, 200, 50);
 
         quadroBranco.add(textoLabelCargo);
         quadroBranco.add(textoLabelNome);
         quadroBranco.add(textoLabelPartido);
+        quadroBranco.add(textoLabelNumero);
         quadroBranco.add(campoTexto);
 
         // Adiciona o quadro branco ao painel principal
