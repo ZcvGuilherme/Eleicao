@@ -1,7 +1,7 @@
 package GUI;
 import CONNECTION.MainCliente;
 public class Main_Urna {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         /*
          * Inicia conexão com a rede
          * -------------------------

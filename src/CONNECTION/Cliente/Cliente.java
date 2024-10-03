@@ -1,8 +1,9 @@
 package CONNECTION.Cliente;
 
+import DATABASE.entidade.Eleicao;
 import java.io.*;
 import java.net.*;
-import java.util.List;
+
 
 
 
@@ -14,15 +15,15 @@ public class Cliente {
         System.out.println("Conectado ao servidor.");
       
     }
+   
+    public void receberObjeto() throws IOException, ClassNotFoundException{
+        ObjectInputStream entrada = new  ObjectInputStream(socket.getInputStream());
+        Eleicao eleicao = (Eleicao) entrada.readObject();
+        System.out.println("Objeto recebido " + eleicao.toString());
 
-    @SuppressWarnings("unchecked")
-    public void receberLista() throws IOException, ClassNotFoundException {
-        ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
-      
-        List<String> lista = (List<String>) entrada.readObject(); // Desserializa a lista recebida
-        System.out.println("Lista recebida do servidor: " + lista);
     }
 
+   
     public void fecharConexao() throws IOException {
         if (socket != null && !socket.isClosed()) {
             socket.close();

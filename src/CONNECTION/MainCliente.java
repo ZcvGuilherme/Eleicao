@@ -6,24 +6,14 @@ import java.io.IOException;
 
 public class MainCliente {
 
-     public static void main(String[] args) {
+    public static void iniciarCliente() throws ClassNotFoundException{
         Cliente cliente = new Cliente();
         try {
-            cliente.conectar("localhost", 5004); // Conecta ao servidor
-            cliente.receberLista(); // Recebe a lista
+            cliente.conectar("10.14.127.217", 5004); // Conecta ao servidor
+            cliente.receberObjeto();
             Starter.iniciarInterface();
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void iniciarCliente(){
-        Cliente cliente = new Cliente();
-        try {
-            cliente.conectar("localhost", 5004); // Conecta ao servidor
-            cliente.receberLista(); // Recebe a lista
-            Starter.iniciarInterface();
-        } catch (IOException | ClassNotFoundException e) {
+                
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
