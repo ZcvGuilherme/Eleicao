@@ -3,7 +3,6 @@ package GUI.Eleicao;
 import DATABASE.entidade.Candidato;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 public class Separador {
     public static List<Candidato> filtro(List<Candidato> candidatos, String cargo) {
         List<Candidato> candidatoFiltrado = new ArrayList<>();
@@ -16,17 +15,14 @@ public class Separador {
         
         return candidatoFiltrado;
     }
-    public static void printEleicao(){
-        List<Candidato> candidatos = Arrays.asList(
-            new Candidato("João", 1, "Prefeito", "Partido A"),
-            new Candidato("Maria", 2, "Vereador", "Partido B"),
-            new Candidato("Pedro", 3, "Prefeito", "Partido C"),
-            new Candidato("Ana", 4, "Vereador", "Partido D")
-        );
-        List<Candidato> prefeito = Separador.filtro(candidatos, "Prefeito");
+
+    
+    public static void printEleicao(List<Candidato> candidatos){
+        
+        List<Candidato> presidente = Separador.filtro(candidatos, "Presidente");
 
         System.out.println("Candidatos ao cargo de Prefeito:");
-        for (Candidato c : prefeito) {
+        for (Candidato c : presidente) {
             System.out.println("Número: " + c.getNum());
             System.out.println("Nome: " + c.getNome());
             System.out.println("Partido: " + c.getPartido());

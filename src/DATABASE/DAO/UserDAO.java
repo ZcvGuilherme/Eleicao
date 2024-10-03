@@ -2,7 +2,6 @@ package DATABASE.DAO;
 
 import DATABASE.conexao.Conexao;
 import DATABASE.entidade.Candidato;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,6 +65,40 @@ public class UserDAO {
         }
         return listaCandidatos;
     }
+    public List<Candidato> retornoTodosCandidatos(){
+        String view = "select * from candidatos";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Candidato> listaCandidatos = new ArrayList<>();
+        try {
+            stmt = Conexao.getConexao().prepareStatement(view);      
+            rs = stmt.executeQuery();
+    
+            while (rs.next()) {
+                // Exemplo de como acessar os dados retornados
+                int numero = rs.getInt("numero");
+                String nome = rs.getString("nome");
+                String cargo = rs.getString("cargo");
+                String partido = rs.getString("partido");
+                Candidato candidato = new Candidato(nome, numero, cargo, partido);
+                listaCandidatos.add(candidato);
+            }
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (stmt != null) stmt.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return listaCandidatos;
+    }
+
+
     public void EleicaoBD(int duracaoMinutos){
         String ec = "INSERT INTO eleicoes (Tempo, presidenteVotoNull, governadorVotoNull, senadorVotoNull, deputadoFVotoNull, deputadoEVotoNull, votoBranco) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement ez = null;
@@ -91,8 +124,6 @@ public class UserDAO {
     }
 
     public List<int[]> listarEleicoes(){
-
-
         String comm = "select * from eleicoes";
         PreparedStatement statment = null;
         ResultSet results = null;
@@ -104,6 +135,7 @@ public class UserDAO {
             while (results.next()) { 
                 int idEleicao = results.getInt("ID");
                 int timeEleicao = results.getInt("Tempo");
+
                 eleicoes.add(new int[]{idEleicao, timeEleicao});
             }
         } catch (SQLException e) {
@@ -116,7 +148,7 @@ public class UserDAO {
                 e.printStackTrace();
             }
         }
-        return  eleicoes;
+        return eleicoes;
     }
     public void add_eleitores(int quantidade){
         String sql = "insert into Eleitores (Contagem) values (?)";
