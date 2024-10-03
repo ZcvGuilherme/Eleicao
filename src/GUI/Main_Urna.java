@@ -1,6 +1,5 @@
 package GUI;
-
-import GUI.Frame_cadastro_User.Tela.Starter;
+import CONNECTION.MainCliente;
 public class Main_Urna {
     public static void main(String[] args) {
         /*
@@ -11,6 +10,6 @@ public class Main_Urna {
          * aparece a urna
          * terminou os votos, finaliza
          */
-        Starter.iniciarInterface();
+        MainCliente.iniciarCliente();
     }
 }

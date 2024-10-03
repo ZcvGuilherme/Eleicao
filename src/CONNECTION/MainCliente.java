@@ -1,8 +1,8 @@
 package CONNECTION;
 
-import java.io.IOException;
-
 import CONNECTION.Cliente.Cliente;
+import GUI.Frame_cadastro_User.Tela.Starter;
+import java.io.IOException;
 
 public class MainCliente {
 
@@ -11,7 +11,18 @@ public class MainCliente {
         try {
             cliente.conectar("localhost", 5004); // Conecta ao servidor
             cliente.receberLista(); // Recebe a lista
-            cliente.fecharConexao(); // Fecha a conexão
+            Starter.iniciarInterface();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void iniciarCliente(){
+        Cliente cliente = new Cliente();
+        try {
+            cliente.conectar("localhost", 5004); // Conecta ao servidor
+            cliente.receberLista(); // Recebe a lista
+            Starter.iniciarInterface();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

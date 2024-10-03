@@ -1,15 +1,15 @@
 package CONNECTION;
 
+import CONNECTION.Servidor.Servidor;
+import DATABASE.entidade.Eleicao;
 import java.io.IOException;
 
-import CONNECTION.Servidor.Servidor;
-
 public class MainServidor {
-    public static void main(String[] args) {
+
+    public static void iniciarServidor(Eleicao eleicao){
         Servidor servidor = new Servidor();
-        
         try {
-            servidor.iniciar(5004); // Inicia o servidor na porta 5001
+            servidor.iniciar(5004, eleicao);
         } catch (IOException e) {
             e.printStackTrace();
         }
