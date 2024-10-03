@@ -57,7 +57,9 @@ public class GraficoProporcional extends JPanel {
             g.setColor(coresProporcionais[i]);
             g.fillRect(x, y, larguraBarra, alturaBarra);
             g.setColor(Color.BLACK);
-            g.drawString(partidos.get(i), x, eixoY + 15);
+            // Desenha as cadeiras acima da barra
+            g.drawString(String.valueOf(cadeiras.get(i)), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(String.valueOf(cadeiras.get(i))) / 2, y - 5);
+            g.drawString(partidos.get(i), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(partidos.get(i)) / 2, eixoY + 15);
         }
 
         g.drawString("Eleições Proporcionais", (getWidth() - g.getFontMetrics().stringWidth("Eleições Proporcionais")) / 2, 30);

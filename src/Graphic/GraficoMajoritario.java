@@ -59,7 +59,9 @@ public class GraficoMajoritario extends JPanel {
             g.setColor(coresMajoritarios[i]);
             g.fillRect(x, y, larguraBarra, alturaBarra);
             g.setColor(Color.BLACK);
-            g.drawString(candidatos.get(i), x, eixoY + 15);
+            // Desenha os votos acima da barra
+            g.drawString(String.valueOf(votos.get(i)), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(String.valueOf(votos.get(i))) / 2, y - 5);
+            g.drawString(candidatos.get(i), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(candidatos.get(i)) / 2, eixoY + 15);
         }
 
         g.drawString("Eleições Majoritárias", (getWidth() - g.getFontMetrics().stringWidth("Eleições Majoritárias")) / 2, 30);
