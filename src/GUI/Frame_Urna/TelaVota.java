@@ -13,12 +13,13 @@ public class TelaVota {
         panel.setLayout(null);
         frame.add(panel);
 
-        // Criar e adicionar os botões
-        BotaoCriar.adicionarBotoesNumericos(panel);
-        BotaoCriar.adicionarBotoesFuncionais(panel);
-
         // Criar e adicionar o quadro branco
-        QuadroBranco.adicionarAoPanel(panel, 50, 50, 700, 600);
+        JTextField campoTexto = QuadroBranco.adicionarAoPanel(panel, 50, 50, 700, 600);
+
+        // Criar e adicionar os botões
+        BotaoCriar.adicionarBotoesNumericos(panel, campoTexto);
+        BotaoCriar.adicionarBotoesFuncionais(panel, campoTexto);
+        
 
         frame.setVisible(true);
     }

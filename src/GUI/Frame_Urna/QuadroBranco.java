@@ -1,11 +1,14 @@
 package GUI.Frame_Urna;
 
+import GUI.NumericDocumentFilter;
 import javax.swing.*;
+import javax.swing.text.AbstractDocument;
+
 import java.awt.*;
 
 public class QuadroBranco {
 
-    public static void adicionarAoPanel(JPanel panel, int x, int y, int largura, int altura) {
+    public static JTextField adicionarAoPanel(JPanel panel, int x, int y, int largura, int altura) {
         // Cria o painel branco
         JPanel quadroBranco = new JPanel();
         quadroBranco.setBackground(Color.WHITE);
@@ -23,9 +26,11 @@ public class QuadroBranco {
         quadroBranco.add(textoLabelNome);
         quadroBranco.add(textoLabelPartido);
         quadroBranco.add(textoLabelNumero);
-        quadroBranco.add(campoTexto);
+        quadroBranco.add(campoTexto);   
 
         // Adiciona o quadro branco ao painel principal
         panel.add(quadroBranco);
+
+        return campoTexto;
     }
 }
