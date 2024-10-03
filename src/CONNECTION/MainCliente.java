@@ -1,23 +1,21 @@
 package CONNECTION;
 
 import java.io.IOException;
+
 import CONNECTION.Cliente.Cliente;
-import CONNECTION.Cliente.Receptor;
+
 public class MainCliente {
 
-    public static void main(String[] args) throws IOException {
-        Cliente cliente = new Cliente(); // Inicialize o cliente como necessário
-        Receptor receptor = new Receptor(cliente); // Crie uma instância de Receptor
-
+     public static void main(String[] args) {
+        Cliente cliente = new Cliente();
         try {
-            // Conectar ao servidor (supondo que você tenha um método para isso)
-            cliente.conectar("127.0.0.1", 5004); // Defina o IP e a porta do servidor
-            receptor.monitorar(); // Chame o método monitorar
-        } catch (IOException e) {
+            cliente.conectar("localhost", 5004); // Conecta ao servidor
+            cliente.receberLista(); // Recebe a lista
+            cliente.fecharConexao(); // Fecha a conexão
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-        } finally {
-            cliente.fecharConexao(); // Certifique-se de fechar a conexão ao final
         }
     }
-
 }
+    
+
