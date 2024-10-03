@@ -1,4 +1,4 @@
-package CONNECTION.Cliente;
+package CONNECTION.EleitorServer;
 
 import DATABASE.entidade.Eleicao;
 import java.io.*;
@@ -7,7 +7,7 @@ import java.net.*;
 
 
 
-public class Cliente {
+public class EleitorServer {
     private Socket socket;
   
     public void conectar(String endereco, int porta) throws IOException {
