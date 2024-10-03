@@ -1,7 +1,8 @@
 package Graphic;
 
-import javax.swing.JFrame;
+import DATABASE.DAO.UserDAO;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,11 +12,12 @@ public class MainGraphic {
     private static GraficoMajoritario graficoMajoritario;
     private static GraficoProporcional graficoProporcional;
     private static boolean isMajoritario = true; // Para controlar qual gráfico está visível
+    private static UserDAO userDAO = new UserDAO(); // Instância do DAO para acessar dados
 
     public static void main(String[] args) {
         frame = new JFrame("Gráficos de Eleições");
-        graficoMajoritario = new GraficoMajoritario();
-        graficoProporcional = new GraficoProporcional();
+        graficoMajoritario = new GraficoMajoritario(userDAO);
+        graficoProporcional = new GraficoProporcional(userDAO);
 
         // Inicialmente, mostra o gráfico majoritário
         frame.setLayout(new BorderLayout());
@@ -45,11 +47,3 @@ public class MainGraphic {
             isMajoritario = false;
         } else {
             frame.getContentPane().remove(graficoProporcional);
-            frame.getContentPane().add(graficoMajoritario, BorderLayout.CENTER);
-            isMajoritario = true;
-        }
-        
-        frame.revalidate(); // Revalida a janela
-        frame.repaint(); // Atualiza a janela
-    }
-}
