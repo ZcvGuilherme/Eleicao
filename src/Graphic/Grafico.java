@@ -1,30 +1,28 @@
 package Graphic;
 
-import DATABASE.DAO.UserDAO;
-import DATABASE.entidade.Candidato;
-
-import javax.swing.JPanel;
 import java.awt.Graphics;
 import java.util.List;
+import javax.swing.JPanel;
 
 public abstract class Grafico extends JPanel {
+    protected List<String> rotulos; // Para os rótulos (candidatos ou partidos)
+    protected List<Integer> valores; // Para os votos ou cadeiras
 
-    protected List<Candidato> candidatos; // Lista de candidatos a ser exibida
-    protected UserDAO userDAO; // Para acessar os dados dos candidatos
+    protected int larguraBarra = 60; // Largura da barra
+    protected int espacoEntreBarras = 30; // Espaço entre barras
+    protected int maxValor; // Valor máximo para escalar as barras
 
-    // Construtor que inicializa o UserDAO e a lista de candidatos
-    public Grafico(UserDAO userDAO) {
-        this.userDAO = userDAO;
-        this.candidatos = userDAO.ver_candidatos("Partido Exemplo"); // Ajuste para carregar candidatos de um partido
-        repaint(); // Repaint para atualizar o gráfico com os candidatos
+    public Grafico(List<String> rotulos, List<Integer> valores, int maxValor) {
+        this.rotulos = rotulos;
+        this.valores = valores;
+        this.maxValor = maxValor;
     }
-
-    // Método abstrato para ser implementado nas subclasses
-    protected abstract void drawGrafico(Graphics g);
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawGrafico(g); // Chama o método de desenho do gráfico
+        drawGrafico(g);
     }
+
+    protected abstract void drawGrafico(Graphics g); // Método a ser implementado nas subclasses
 }
