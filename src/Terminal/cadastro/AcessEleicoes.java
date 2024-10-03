@@ -1,5 +1,7 @@
 package Terminal.cadastro;
 import DATABASE.DAO.UserDAO;
+import DATABASE.entidade.Candidato;
+import DATABASE.entidade.Eleicao;
 import Terminal.utili.utilitaveis;
 import java.util.List;
 public class AcessEleicoes {
@@ -19,5 +21,21 @@ public class AcessEleicoes {
         for (int[] eleicao : eleicoes) {
             System.out.printf("%-10d | %-20d\n", eleicao[0], eleicao[1]);
         }
+    }
+    public int retornarTempo(int id){
+        List<int[]> eleicoes = dao.listarEleicoes();
+
+        for (int[] eleicao : eleicoes) {
+            if (id == eleicao[0]){
+                return eleicao[1];
+            }
+        }
+        return 0;
+    }
+    public void iniciarEleicao(int id){
+        List<Candidato> candidatos = dao.retornoTodosCandidatos();
+        int tempo = retornarTempo(id);
+        Eleicao objEleicao = new Eleicao(candidatos, id, tempo, 0, 0, 0, 0, 0, 0);
+
     }
 }

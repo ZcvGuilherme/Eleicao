@@ -14,8 +14,7 @@ public class Eleicao {
     private int votoBranco;
 
     // Construtor completo
-    public Eleicao(List<Candidato> candidatos, int ID, int tempo, int presidenteVotoNull, int governadorVotoNull, 
-                   int senadorVotoNull, int deputadoFVotoNull, int deputadoEVotoNull, int votoBranco) {
+    public Eleicao(List<Candidato> candidatos, int ID, int tempo, int presidenteVotoNull, int governadorVotoNull, int senadorVotoNull, int deputadoFVotoNull, int deputadoEVotoNull, int votoBranco) {
         this.candidatos = candidatos;
         this.ID = ID;
         this.tempo = tempo;

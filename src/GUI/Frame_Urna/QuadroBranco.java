@@ -1,6 +1,6 @@
 package GUI.Frame_Urna;
 
-import GUI.NumericDocumentFilter;
+import GUI.Frame_Urna.FiltroNumerico;
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;
 
@@ -20,13 +20,20 @@ public class QuadroBranco {
         JLabel textoLabelNome = CriadorComponentes.criarLabel("Nome:", 50, 300, 400, 80);
         JLabel textoLabelPartido = CriadorComponentes.criarLabel("Partido:", 50, 400, 400, 80);
         JLabel textoLabelNumero = CriadorComponentes.criarLabel("Numero:", 50, 150, 400, 80);
+
         JTextField campoTexto = CriadorComponentes.criarTextField(280, 170, 200, 50);
+        JLabel errorLabel = new JLabel();
+        errorLabel.setBounds(280, 220, 200, 30); // Posição da label de erro
+        errorLabel.setForeground(Color.RED); // Define a cor do texto como vermelho
+        ((AbstractDocument) campoTexto.getDocument()).setDocumentFilter(new NumericDocumentFilter(errorLabel));
+
 
         quadroBranco.add(textoLabelCargo);
         quadroBranco.add(textoLabelNome);
         quadroBranco.add(textoLabelPartido);
         quadroBranco.add(textoLabelNumero);
-        quadroBranco.add(campoTexto);   
+        quadroBranco.add(campoTexto);  
+        quadroBranco.add(errorLabel);
 
         // Adiciona o quadro branco ao painel principal
         panel.add(quadroBranco);

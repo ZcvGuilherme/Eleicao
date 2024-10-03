@@ -1,11 +1,10 @@
 package Terminal;
+import DATABASE.DAO.UserDAO;
 import Terminal.cadastro.AcessCanditatos;
 import Terminal.cadastro.AcessEleicoes;
 import Terminal.cadastro.MainCadastro;
 import Terminal.utili.utilitaveis;
 import java.util.Scanner;
-
-import DATABASE.DAO.UserDAO;
 public class Main {
     public static void main(String[] args) {
         MainCadastro presidente = new MainCadastro();
@@ -60,7 +59,12 @@ public class Main {
                 break;
             case 6:
                 System.out.println("Digite o id da eleição para começar: ");
-                scanner.nextInt();
+                int id = scanner.nextInt();
+                new AcessEleicoes().iniciarEleicao(id);
+                scanner.nextLine();
+                scanner.nextLine();
+                
+                
                 
                 break;
             case 7:
