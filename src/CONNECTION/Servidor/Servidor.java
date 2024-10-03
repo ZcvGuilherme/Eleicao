@@ -9,7 +9,11 @@ public class Servidor {
     private ServerSocket serverSocket;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void iniciar(int porta, Eleicao eleicao, int tempo) throws IOException {
+=======
+    public void iniciar(int porta) throws IOException {
+>>>>>>> parent of ecbfade (commit conexao)
 =======
     public void iniciar(int porta) throws IOException {
 >>>>>>> parent of ecbfade (commit conexao)
@@ -22,6 +26,7 @@ public class Servidor {
                 Socket socket = serverSocket.accept();
                 System.out.println("Cliente conectado: " + socket.getInetAddress());
 <<<<<<< HEAD
+<<<<<<< HEAD
                    
             } catch (SocketTimeoutException e) {
                 System.out.println("Tempo de eleição encerrado.");
@@ -33,6 +38,8 @@ public class Servidor {
 
   
 =======
+=======
+>>>>>>> parent of ecbfade (commit conexao)
                 List<String> lista = Arrays.asList("Item1", "Item2", "Item3");
                 enviarLista(socket, lista);    
             }    

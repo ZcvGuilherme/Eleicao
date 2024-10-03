@@ -1,9 +1,12 @@
 package CONNECTION;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import CONNECTION.Servidor.Servidor;
 import DATABASE.entidade.Eleicao;
+=======
+>>>>>>> parent of ecbfade (commit conexao)
 =======
 >>>>>>> parent of ecbfade (commit conexao)
 import java.io.IOException;
@@ -15,6 +18,7 @@ public class MainServidor {
         Servidor servidor = new Servidor();
         
         try {
+<<<<<<< HEAD
 <<<<<<< HEAD
             servidor.iniciar(5005, eleicao);
 =======
@@ -31,6 +35,9 @@ public class MainServidor {
        try {
         servidor.iniciar(5004);
 >>>>>>> Stashed changes
+=======
+            servidor.iniciar(5004); // Inicia o servidor na porta 5001
+>>>>>>> parent of ecbfade (commit conexao)
 =======
             servidor.iniciar(5004); // Inicia o servidor na porta 5001
 >>>>>>> parent of ecbfade (commit conexao)

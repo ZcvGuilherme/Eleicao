@@ -37,5 +37,9 @@ public class AcessEleicoes {
         List<Candidato> candidatos = dao.retornoTodosCandidatos();
         int tempo = retornarTempo(id);
         Eleicao objEleicao = new Eleicao(candidatos, id, tempo, 0, 0, 0, 0, 0, 0);
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of ecbfade (commit conexao)
     }
 }
