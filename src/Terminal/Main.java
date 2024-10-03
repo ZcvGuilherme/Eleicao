@@ -63,6 +63,9 @@ public class Main {
                 new AcessEleicoes().iniciarEleicao(id);
                 scanner.nextLine();
                 scanner.nextLine();
+                
+                
+                
                 break;
             case 7:
             System.out.println("Saindo...");
