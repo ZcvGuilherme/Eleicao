@@ -1,4 +1,4 @@
-package GUI.Frame_Urna;
+package GUI.Frame_Urna.configs;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -60,6 +60,8 @@ public class BotaoCriar {
             @Override
             public void actionPerformed(ActionEvent e){
                 campoTexto.setText("");
+
+            
             }
         });
         panel.add(botaoConfirma);

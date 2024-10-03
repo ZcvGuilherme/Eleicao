@@ -29,4 +29,27 @@ public class Separador {
             System.out.println("-----------------------------");
         }
     }
+
+    public static List<Candidato> gerarCandidatosDeExemplo() {
+        List<Candidato> candidatos = new ArrayList<>();
+
+        // Candidatos a Presidente
+        candidatos.add(new Candidato("Candidato A", 12, "Presidente", "Partido A"));
+        candidatos.add(new Candidato("Candidato B", 34, "Presidente", "Partido B"));
+
+        // Candidatos a Governador
+        candidatos.add(new Candidato("Candidato C", 56, "Governador", "Partido C"));
+        candidatos.add(new Candidato("Candidato D", 78, "Governador", "Partido D"));
+
+        // Candidatos a Senador
+        candidatos.add(new Candidato("Candidato E", 90, "Senador", "Partido E"));
+
+        // Candidatos a Deputado Federal
+        candidatos.add(new Candidato("Candidato F", 1234, "Deputado Federal", "Partido F"));
+
+        // Candidatos a Deputado Estadual
+        candidatos.add(new Candidato("Candidato G", 5678, "Deputado Estadual", "Partido G"));
+
+        return candidatos;
+    }
 }

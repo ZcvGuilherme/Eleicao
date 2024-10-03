@@ -1,4 +1,4 @@
-package GUI.Frame_Urna;
+package GUI.Frame_Urna.tela;
 
 import javax.swing.*;
 import java.awt.*;

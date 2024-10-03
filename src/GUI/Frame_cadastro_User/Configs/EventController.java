@@ -1,7 +1,7 @@
 package GUI.Frame_cadastro_User.Configs;
 
 import DATABASE.entidade.User;
-import GUI.Frame_Urna.TelaVota;
+import GUI.Frame_Urna.tela.TelaVota;
 import GUI.Frame_cadastro_User.Tela.Viewer;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
