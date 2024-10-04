@@ -6,7 +6,6 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// Classe responsável por executar a interface gráfica
 public class MainGraphic {
     private static JFrame frame;
     private static GraficoMajoritario graficoMajoritario;
@@ -38,7 +37,7 @@ public class MainGraphic {
         frame.add(botaoAlternar, BorderLayout.SOUTH);
 
         // Configurações da janela
-        frame.setSize(500, 400);
+        frame.setSize(800, 600); // Aumentei o tamanho para garantir que os gráficos apareçam corretamente
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null); // Centraliza a janela na tela
         frame.setVisible(true);

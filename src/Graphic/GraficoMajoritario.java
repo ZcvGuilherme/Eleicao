@@ -25,6 +25,12 @@ public class GraficoMajoritario extends JPanel {
         votos.add(80);
         candidatos.add("Candidato D");
         votos.add(50);
+        
+        // Adicionando votos brancos e nulos
+        candidatos.add("Votos Brancos");
+        votos.add(30);
+        candidatos.add("Votos Nulos");
+        votos.add(20);
     }
 
     @Override
@@ -39,20 +45,20 @@ public class GraficoMajoritario extends JPanel {
         int espacoEntreBarras = 30;
         int maxVotos = 200;
 
-        int eixoY = getHeight() / 2 + 20;
-        int eixoX = getWidth() - 20;
+        int eixoY = getHeight() - 60;  // Ajuste para garantir que o eixo fique na parte inferior da janela
+        int eixoX = getWidth() - 40;
 
         g.drawLine(40, 40, 40, eixoY);  // Eixo Y
         g.drawLine(40, eixoY, eixoX, eixoY);  // Eixo X
 
-        Color[] coresMajoritarios = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE};
+        Color[] coresMajoritarios = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE, Color.LIGHT_GRAY, Color.DARK_GRAY};
 
         int totalBarras = votos.size();
         int larguraTotal = (totalBarras * larguraBarra) + ((totalBarras - 1) * espacoEntreBarras);
         int inicioX = (getWidth() - larguraTotal) / 2; // Centraliza o gráfico
 
         for (int i = 0; i < votos.size(); i++) {
-            int alturaBarra = (int) ((double) votos.get(i) / maxVotos * (getHeight() / 2 - 80));
+            int alturaBarra = (int) ((double) votos.get(i) / maxVotos * (getHeight() - 100));  // Ajuste na altura da barra
             int x = inicioX + i * (larguraBarra + espacoEntreBarras);
             int y = eixoY - alturaBarra;
 
