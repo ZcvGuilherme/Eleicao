@@ -6,10 +6,10 @@ import GUI.Eleicao.Separador;
 import GUI.Eleicao.SeparadorCargo;
 public enum Cargo {
     PRESIDENTE("Presidente", 2, SeparadorCargo.SeparaPresidente()), 
-    GOVERNADOR("Governador", 3, null), 
-    SENADOR("Senador", 4, null), 
-    DEPUTADO_FEDERAL("Deputado Federal", 5, null), 
-    DEPUTADO_ESTADUAL("Deputado Estadual", 5, null);
+    GOVERNADOR("Governador", 3, SeparadorCargo.SeparaGovernador()), 
+    SENADOR("Senador", 4, SeparadorCargo.SeparaSenador()), 
+    DEPUTADO_FEDERAL("Deputado Federal", 5, SeparadorCargo.SeparaDeputadoF()), 
+    DEPUTADO_ESTADUAL("Deputado Estadual", 5, SeparadorCargo.SeparaDeputadoE());
 
     private final String nome;
     private final int maxDigitos;
