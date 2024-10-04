@@ -1,28 +1,75 @@
 package Graphic;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import DATABASE.DAO.UserDAO;
+import DATABASE.entidade.Candidato;
+
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JPanel;
 
 public class GraficoProporcional extends JPanel {
 
-    private List<String> partidos = new ArrayList<>();
-    private List<Integer> cadeiras = new ArrayList<>();
+    private List<Candidato> partidos = new ArrayList<>();
+    private String tipo;
+    private int totalVotos;
+    private int cadeiras = 10;  // Número de cadeiras a serem distribuídas (ajustável)
+    private UserDAO dao = new UserDAO();
+    private List<Integer> cadeirasPorPartido = new ArrayList<>(); // Armazenar cadeiras distribuídas para cada partido
 
-    public GraficoProporcional() {
+    public GraficoProporcional(String tipo) {
+        this.tipo = tipo;
         gerarTabela();
+        calcularCadeiras();  // Calcula as cadeiras ao iniciar o gráfico
     }
 
     // Gera tabela de partidos proporcionais
     private void gerarTabela() {
-        partidos.add("Partido X");
-        cadeiras.add(10);
-        partidos.add("Partido Y");
-        cadeiras.add(15);
-        partidos.add("Partido Z");
-        cadeiras.add(5);
+        partidos = dao.retornoTodosCandidatos(); // Recupera todos os candidatos (ou partidos, se aplicável)
+        totalVotos = setVotosTotais();
+    }
+
+    private int setVotosTotais() {
+        int totalVotos = 0;
+        for (Candidato candidato : partidos) {
+            totalVotos += candidato.getvotos();
+        }
+        return totalVotos;
+    }
+
+    // Método que distribui cadeiras usando o método de Hondt
+    private void calcularCadeiras() {
+        // Inicializa o array de cadeiras por partido
+        cadeirasPorPartido.clear();
+        int[] cadeirasTemp = new int[partidos.size()]; // Array temporário para armazenar cadeiras
+        List<Double> quocientes = new ArrayList<>();
+
+        // Gera quocientes para cada partido (votos / divisores)
+        for (Candidato partido : partidos) {
+            for (int j = 1; j <= cadeiras; j++) {
+                quocientes.add((double) partido.getvotos() / j);
+            }
+        }
+
+        // Ordena os quocientes em ordem decrescente
+        quocientes.sort((a, b) -> Double.compare(b, a));
+
+        // Define o menor quociente que receberá uma cadeira
+        double limiar = quocientes.get(cadeiras - 1);
+
+        // Distribui as cadeiras com base no limiar
+        for (int i = 0; i < partidos.size(); i++) {
+            Candidato partido = partidos.get(i);
+            int cadeirasRecebidas = 0;
+
+            for (int j = 1; j <= cadeiras; j++) {
+                if ((double) partido.getvotos() / j >= limiar) {
+                    cadeirasRecebidas++;
+                }
+            }
+            cadeirasTemp[i] = cadeirasRecebidas; // Armazena cadeiras recebidas por partido
+            cadeirasPorPartido.add(cadeirasRecebidas); // Armazena na lista de cadeiras
+        }
     }
 
     @Override
@@ -35,33 +82,36 @@ public class GraficoProporcional extends JPanel {
     private void drawGraficoProporcional(Graphics g) {
         int larguraBarra = 60;
         int espacoEntreBarras = 30;
-        int maxCadeiras = 20;
+        int maxCadeiras = cadeiras;  // Número máximo de cadeiras que pode ser mostrado
 
-        int eixoY = getHeight() / 2 + 20;
-        int eixoX = getWidth() - 20;
+        int eixoY = getHeight() - 60;
+        int eixoX = getWidth() - 40;
 
         g.drawLine(40, 40, 40, eixoY);  // Eixo Y
         g.drawLine(40, eixoY, eixoX, eixoY);  // Eixo X
 
-        Color[] coresProporcionais = {Color.MAGENTA, Color.CYAN, Color.YELLOW};
+        Color[] coresProporcionais = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE, Color.CYAN};
 
-        int totalBarras = cadeiras.size();
+        int totalBarras = partidos.size();
         int larguraTotal = (totalBarras * larguraBarra) + ((totalBarras - 1) * espacoEntreBarras);
         int inicioX = (getWidth() - larguraTotal) / 2; // Centraliza o gráfico
 
-        for (int i = 0; i < cadeiras.size(); i++) {
-            int alturaBarra = (int) ((double) cadeiras.get(i) / maxCadeiras * (getHeight() / 2 - 60));
+        // Desenha as barras para cada partido
+        for (int i = 0; i < partidos.size(); i++) {
+            Candidato partido = partidos.get(i);
+            int cadeirasRecebidas = cadeirasPorPartido.get(i);  // Cadeiras calculadas para este partido
+            int alturaBarra = (int) ((double) cadeirasRecebidas / maxCadeiras * (getHeight() - 100));  // Proporção da altura da barra
             int x = inicioX + i * (larguraBarra + espacoEntreBarras);
             int y = eixoY - alturaBarra;
 
-            g.setColor(coresProporcionais[i]);
+            g.setColor(coresProporcionais[i % coresProporcionais.length]); // Use uma cor do array
             g.fillRect(x, y, larguraBarra, alturaBarra);
             g.setColor(Color.BLACK);
-            // Desenha as cadeiras acima da barra
-            g.drawString(String.valueOf(cadeiras.get(i)), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(String.valueOf(cadeiras.get(i))) / 2, y - 5);
-            g.drawString(partidos.get(i), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(partidos.get(i)) / 2, eixoY + 15);
+            // Desenha o número de cadeiras acima da barra
+            g.drawString(String.valueOf(cadeirasRecebidas), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(String.valueOf(cadeirasRecebidas)) / 2, y - 5);
+            g.drawString(partido.getPartido(), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(partido.getPartido()) / 2, eixoY + 15);
         }
 
-        g.drawString("Eleições Proporcionais", (getWidth() - g.getFontMetrics().stringWidth("Eleições Proporcionais")) / 2, 30);
+        g.drawString(tipo + " - Cadeiras", (getWidth() - g.getFontMetrics().stringWidth(tipo + " - Cadeiras")) / 2, 30);
     }
 }
