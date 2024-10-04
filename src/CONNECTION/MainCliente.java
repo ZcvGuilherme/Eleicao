@@ -3,7 +3,8 @@ package CONNECTION;
 import CONNECTION.Cliente.Cliente;
 import GUI.Frame_cadastro_User.Tela.Starter;
 import java.io.IOException;
-
+import DATABASE.entidade.Eleicao;
+import java.util.List;
 public class MainCliente {
 
      public static void main(String[] args) {
@@ -11,7 +12,7 @@ public class MainCliente {
         try {
             cliente.conectar("localhost", 5004); // Conecta ao servidor
             cliente.receberLista(); // Recebe a lista
-            Starter.iniciarInterface();
+            Starter.iniciarInterface(cliente);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -21,8 +22,8 @@ public class MainCliente {
         Cliente cliente = new Cliente();
         try {
             cliente.conectar("localhost", 5004); // Conecta ao servidor
-            cliente.receberLista(); // Recebe a lista
-            Starter.iniciarInterface();
+            cliente.receberLista();
+            Starter.iniciarInterface(cliente);
         } catch (IOException e) {
             e.printStackTrace();
         }

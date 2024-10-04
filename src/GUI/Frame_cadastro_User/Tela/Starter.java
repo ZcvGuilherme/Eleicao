@@ -6,8 +6,8 @@ import java.util.List;
 
 import CONNECTION.Cliente.Cliente;
 public class Starter {
-    public static void iniciarInterface(){
-        List<Integer> ids = new Cliente().receberID();
+    public static void iniciarInterface(Cliente cliente){
+        List<Integer> ids = cliente.receberID();
         Viewer view = new Viewer();
         EventController controller = new EventController(view, ids);
     }

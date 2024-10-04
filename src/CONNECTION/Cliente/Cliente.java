@@ -34,19 +34,10 @@ public class Cliente {
             System.err.println("Lista recebida: " + lista);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();  // Tratamento de exceção
-        } finally {
-            // Fechar ObjectInputStream para evitar vazamento de recursos
-            try {
-                if (socket != null && !socket.isClosed()) {
-                    socket.close();  // Fecha o socket, se necessário
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
-        // Retorna a lista (mesmo se for null)
-        return lista;
+        return lista;  // Retorna a lista (mesmo se for null)
     }
+    
     public void fecharConexao() throws IOException {
         if (socket != null && !socket.isClosed()) {
             socket.close();

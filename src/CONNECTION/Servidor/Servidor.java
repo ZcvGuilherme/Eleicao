@@ -20,7 +20,7 @@ public class Servidor {
                 try {
                     Socket socket = serverSocket.accept();
                     System.out.println("Cliente conectado: " + socket.getInetAddress());
-                    enviarLista(socket, eleicao);    
+                    enviarLista(socket, eleicao);
                     enviarID(socket, dao.retornoID());
                 } catch (SocketTimeoutException e) {
                     System.out.println("Tempo de eleição encerrado.");
