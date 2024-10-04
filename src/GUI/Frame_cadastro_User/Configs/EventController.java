@@ -6,15 +6,20 @@ import GUI.Frame_cadastro_User.Tela.Viewer;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 
 public class EventController {
     private Viewer view;
     private User user;
-    
-    public EventController(Viewer view) {
+    private List<Integer> listaDeIDs;
+
+
+    public EventController(Viewer view, List<Integer> listaDeIDs) {
         this.view = view;
+        this.listaDeIDs = listaDeIDs;
         init_controller();
     }
     private void init_controller() {
@@ -37,6 +42,11 @@ public class EventController {
                 try {
                     // Tenta converter o ID em número
                     int number = Integer.parseInt(ID);
+                    if (!listaDeIDs.contains(number)) {
+                        JOptionPane.showMessageDialog(view.getFrame(), "ID não encontrado na lista.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        view.getTxtID().setBorder(BorderFactory.createLineBorder(Color.RED));
+                        return; // Evita continuar se o ID não for encontrado
+                    }
                     user = new User(number);
 
                     // Atualiza os labels com os dados do usuário
@@ -44,7 +54,6 @@ public class EventController {
                     
                     // Fechar janela -> Abrir janela
                     view.getFrame().dispose();
-                    
                     TelaVota.chama_urna();
 
                 } catch (NumberFormatException ex) {

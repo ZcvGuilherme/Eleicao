@@ -7,13 +7,8 @@ import Terminal.utili.utilitaveis;
 import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        MainCadastro presidente = new MainCadastro();
-        MainCadastro governador = new MainCadastro();
-        MainCadastro senadores = new MainCadastro();
-        MainCadastro deputadosF = new MainCadastro();
-        MainCadastro deputadosE = new MainCadastro();
-        MainCadastro EleicaoOFICIAL = new MainCadastro();
-
+        MainCadastro cadastro = new MainCadastro();
+        
         String menu = "1 - Cadastrar Partido\n2 - Ver Partidos\n3 - Cadastrar Eleição\n4 - Ver Eleições\n5 - Cadastrar Eleitores\n6 - Iniciar Eleição\n7 - Sair\n";
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -28,12 +23,12 @@ public class Main {
                 utilitaveis.limpaTela();
                 utilitaveis.SlowPrint("Digite o nome do partido: ", 30);
                 String nomePartido = scanner.nextLine();
-                presidente.menuCadastro(nomePartido, "Presidente");
-                governador.menuCadastro(nomePartido, "Governador");
+                cadastro.menuCadastro(nomePartido, "Presidente");
+                cadastro.menuCadastro(nomePartido, "Governador");
                 //-----------------------------------------------------------------------------------\\
-                senadores.SenxDep(nomePartido, "Senadores", "Senador", 3);
-                deputadosF.SenxDep(nomePartido, "Deputados Federais", "Deputado Federal", 5);
-                deputadosE.SenxDep(nomePartido, "Deputados Estaduais", "Deputado Estadual", 5);
+                cadastro.SenxDep(nomePartido, "Senadores", "Senador", 3);
+                cadastro.SenxDep(nomePartido, "Deputados Federais", "Deputado Federal", 5);
+                cadastro.SenxDep(nomePartido, "Deputados Estaduais", "Deputado Estadual", 5);
                 break;
             case 2:
                 utilitaveis.SlowPrint("Qual Partido você deseja ver? ", 30);
@@ -43,7 +38,7 @@ public class Main {
                 break;
             case 3:
                 utilitaveis.limpaTela();
-                EleicaoOFICIAL.MenuEleicao();
+                cadastro.MenuEleicao();
                 break;
             case 4:
                 utilitaveis.limpaTela();

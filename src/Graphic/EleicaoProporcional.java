@@ -77,7 +77,7 @@ public class EleicaoProporcional {
 
     public static void main(String[] args) {
         // Exemplo: distribui 10 cadeiras para os partidos
-        EleicaoProporcional eleicao = new EleicaoProporcional(10);
+        EleicaoProporcional eleicao = new EleicaoProporcional(10    );
         eleicao.calcularDistribuicaoCadeiras();
     }
 }

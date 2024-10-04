@@ -3,9 +3,9 @@ package CONNECTION.Cliente;
 import java.io.*;
 import java.net.*;
 import DATABASE.entidade.Eleicao;
-import java.io.IOException;
-import java.lang.ClassNotFoundException;
 
+import java.lang.ClassNotFoundException;
+import java.util.List;
 public class Cliente {
     private Socket socket;
   
@@ -21,13 +21,32 @@ public class Cliente {
             Eleicao eleicao = (Eleicao) entrada.readObject(); // Desserializa a instância de Eleicao
             System.out.println("Objeto Eleicao recebido do servidor: " + eleicao);
             return eleicao;
-        } catch (IOException e | ClassNotFoundException a) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            a.printStackTrace();
         }
         return null;
     }
-
+    public List<Integer> receberID() {
+        List<Integer> lista = null;
+        try {
+            ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
+            lista = (List<Integer>) entrada.readObject();  // Cast para List<Integer>
+            System.err.println("Lista recebida: " + lista);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();  // Tratamento de exceção
+        } finally {
+            // Fechar ObjectInputStream para evitar vazamento de recursos
+            try {
+                if (socket != null && !socket.isClosed()) {
+                    socket.close();  // Fecha o socket, se necessário
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        // Retorna a lista (mesmo se for null)
+        return lista;
+    }
     public void fecharConexao() throws IOException {
         if (socket != null && !socket.isClosed()) {
             socket.close();

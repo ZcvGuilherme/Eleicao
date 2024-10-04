@@ -3,6 +3,8 @@ package GUI.Eleicao;
 import DATABASE.entidade.Candidato;
 import java.util.ArrayList;
 import java.util.List;
+
+
 public class Separador {
     public static List<Candidato> filtro(List<Candidato> candidatos, String cargo) {
         List<Candidato> candidatoFiltrado = new ArrayList<>();
@@ -12,7 +14,6 @@ public class Separador {
                 candidatoFiltrado.add(candidato);
             }
         }
-        
         return candidatoFiltrado;
     }
 

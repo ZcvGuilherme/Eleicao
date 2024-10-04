@@ -12,7 +12,7 @@ public class MainCliente {
             cliente.conectar("localhost", 5004); // Conecta ao servidor
             cliente.receberLista(); // Recebe a lista
             Starter.iniciarInterface();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
@@ -23,7 +23,7 @@ public class MainCliente {
             cliente.conectar("localhost", 5004); // Conecta ao servidor
             cliente.receberLista(); // Recebe a lista
             Starter.iniciarInterface();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

@@ -198,4 +198,36 @@ public class UserDAO {
         e.printStackTrace(); // Trata exceções SQL
     }
     }
+
+    public List<Integer> retornoID(){
+        String sql = "select ID from eleitores";
+        PreparedStatement statement = null;
+        ResultSet results = null;
+        List<Integer> lista = new ArrayList<>();
+
+        try{
+            statement = Conexao.getConexao().prepareStatement(sql);
+            results = statement.executeQuery();
+            while (results.next()) {
+                int ID = results.getInt("ID");
+                lista.add(ID);
+            }
+
+            } catch(SQLException e) {
+                e.printStackTrace();
+        } finally {
+            // Fecha o ResultSet e o PreparedStatement
+            try {
+                if (results != null) {
+                    results.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return lista;
+    }
 }
