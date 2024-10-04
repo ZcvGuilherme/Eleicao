@@ -1,7 +1,8 @@
 package GUI;
-import CONNECTION.MainCliente;
+
+import GUI.Frame_cadastro_User.Tela.Starter;
 public class Main_Urna {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
         /*
          * Inicia conexão com a rede
          * -------------------------
@@ -10,6 +11,6 @@ public class Main_Urna {
          * aparece a urna
          * terminou os votos, finaliza
          */
-        MainCliente.iniciarCliente();
+        Starter.iniciarInterface();
     }
 }

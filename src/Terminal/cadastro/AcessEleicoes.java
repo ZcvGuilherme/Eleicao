@@ -1,10 +1,10 @@
 package Terminal.cadastro;
-import CONNECTION.MainServidor;
 import DATABASE.DAO.UserDAO;
 import DATABASE.entidade.Candidato;
 import DATABASE.entidade.Eleicao;
 import Terminal.utili.utilitaveis;
 import java.util.List;
+
 public class AcessEleicoes {
     UserDAO dao = new UserDAO();
     public void cadastrarEleicao(int duracaoMinutos) {
@@ -37,6 +37,9 @@ public class AcessEleicoes {
         List<Candidato> candidatos = dao.retornoTodosCandidatos();
         int tempo = retornarTempo(id);
         Eleicao objEleicao = new Eleicao(candidatos, id, tempo, 0, 0, 0, 0, 0, 0);
-        MainServidor.iniciarServidor(objEleicao);
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of ecbfade (commit conexao)
     }
 }
