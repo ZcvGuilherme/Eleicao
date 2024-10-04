@@ -1,8 +1,9 @@
 package DATABASE.entidade;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Eleicao {
+public class Eleicao implements Serializable{
     private List<Candidato> candidatos;
     private int ID;
     private int tempo;

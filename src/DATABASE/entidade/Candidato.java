@@ -1,6 +1,8 @@
 package DATABASE.entidade;
 
-public class Candidato {
+import java.io.Serializable;
+
+public class Candidato implements Serializable{
     private String nome;
     private int numero;
     private String cargo;
