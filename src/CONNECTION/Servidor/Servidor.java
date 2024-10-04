@@ -9,16 +9,24 @@ import java.util.List;
 public class Servidor {
     private ServerSocket serverSocket;
     private UserDAO dao = new UserDAO();
-
-    public void iniciar(int porta, Eleicao eleicao) throws IOException {
+    private boolean isRunning = false;
+    public void iniciar(int porta, Eleicao eleicao, int tempo) throws IOException {
         serverSocket = new ServerSocket(porta);
+        serverSocket.setSoTimeout(tempo *60000);
+        isRunning = true;
         System.out.println("Servidor iniciado na porta " + porta);
- 
-            while (true) {
-                Socket socket = serverSocket.accept();
-                System.out.println("Cliente conectado: " + socket.getInetAddress());
-                enviarLista(socket, eleicao);    
-                enviarID(socket, dao.retornoID());
+
+            while (isRunning) {
+                try {
+                    Socket socket = serverSocket.accept();
+                    System.out.println("Cliente conectado: " + socket.getInetAddress());
+                    enviarLista(socket, eleicao);    
+                    enviarID(socket, dao.retornoID());
+                } catch (SocketTimeoutException e) {
+                    System.out.println("Tempo de eleição encerrado.");
+                    break;
+                }
+                
             }    
     }
 
@@ -35,6 +43,12 @@ public class Servidor {
         saida.flush();
         System.out.println("Lista Enviada ao cliente");
     }
-
+    public void parar() throws IOException {
+        isRunning = false; // Interrompe o loop do servidor
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            serverSocket.close();  // Fecha o socket do servidor
+            System.out.println("Servidor parado.");
+        }
+    }
     
 }

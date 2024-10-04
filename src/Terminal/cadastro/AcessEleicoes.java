@@ -37,6 +37,6 @@ public class AcessEleicoes {
         List<Candidato> candidatos = dao.retornoTodosCandidatos();
         int tempo = retornarTempo(id);
         Eleicao objEleicao = new Eleicao(candidatos, id, tempo, 0, 0, 0, 0, 0, 0);
-        MainServidor.iniciarServidor(objEleicao);
+        MainServidor.iniciarServidor(objEleicao, tempo);
     }
 }
