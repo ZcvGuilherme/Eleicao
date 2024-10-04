@@ -21,7 +21,7 @@ public class MainCliente {
     public static void iniciarCliente(){
         Cliente cliente = new Cliente();
         try {
-            cliente.conectar("localhost", 5004); // Conecta ao servidor
+            cliente.conectar("192.168.1.5", 5004); // Conecta ao servidor
             cliente.receberLista();
             Starter.iniciarInterface(cliente);
         } catch (IOException e) {
