@@ -1,9 +1,6 @@
 package GUI.Frame_Urna.tela;
 
 import GUI.Frame_Urna.configs.BotaoCriar;
-import GUI.Frame_Urna.configs.Cargo;
-import GUI.Frame_Urna.configs.Status;
-
 import javax.swing.*;
 
 public class TelaVota {

@@ -2,9 +2,10 @@ package GUI.Frame_Urna.configs;
 
 import DATABASE.entidade.Candidato;
 import java.util.List;
-
+import GUI.Eleicao.Separador;
+import GUI.Eleicao.SeparadorCargo;
 public enum Cargo {
-    PRESIDENTE("Presidente", 2, null), 
+    PRESIDENTE("Presidente", 2, SeparadorCargo.SeparaPresidente()), 
     GOVERNADOR("Governador", 3, null), 
     SENADOR("Senador", 4, null), 
     DEPUTADO_FEDERAL("Deputado Federal", 5, null), 

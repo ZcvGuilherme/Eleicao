@@ -1,5 +1,6 @@
 package GUI;
 import CONNECTION.MainCliente;
+import 
 public class Main_Urna {
     public static void main(String[] args) {
         /*
@@ -10,6 +11,6 @@ public class Main_Urna {
          * aparece a urna
          * terminou os votos, finaliza
          */
-        MainCliente.iniciarCliente();
+        Starter.iniciarInterface();
     }
 }
