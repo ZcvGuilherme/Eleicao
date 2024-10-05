@@ -7,97 +7,103 @@ import DATABASE.entidade.Candidato;
 
 public class GraficoProporcional extends JPanel {
 
-    private String tipoEleicao; // Tipo da eleição (e.g., Senador, Deputado)
+    private String tipoEleicao; // Tipo de eleição (ex: Senador, Deputado Federal, etc.)
     private int[] cadeiras; // Quantidade de cadeiras distribuídas
-    private String[] partidos; // Partidos envolvidos na eleição
+    private String[] partidos; // Partidos envolvidos
+    private int[] votos; // Votos dos candidatos
 
     public GraficoProporcional(String tipoEleicao, List<Candidato> candidatos) {
-        this.tipoEleicao = tipoEleicao; // Define o tipo de eleição
-        this.cadeiras = new int[]{0}; // Inicializa o array de cadeiras com um valor padrão
-        this.partidos = new String[]{""}; // Inicializa o array de partidos com um valor padrão
-        
+        this.tipoEleicao = tipoEleicao;
+        this.cadeiras = new int[]{0}; // Inicializa o array de cadeiras
+        this.partidos = new String[]{""}; // Inicializa o array de partidos
+        this.votos = new int[candidatos.size()]; // Inicializa o array de votos
+
         // Gera os dados com base no tipo de eleição
-        gerarDados(tipoEleicao, candidatos); // Chama o método para gerar os dados
+        gerarDados(tipoEleicao, candidatos);
     }
 
     private void gerarDados(String tipoEleicao, List<Candidato> candidatos) {
-        // Apenas para fins de exemplo, valores fixos foram atribuídos
-        // Você pode ajustar conforme a lógica necessária para os dados reais
-        
+        // Gera os votos dos candidatos
+        for (int i = 0; i < candidatos.size(); i++) {
+            votos[i] = candidatos.get(i).getvotos(); // Obtém os votos do candidato
+        }
+
+        // Define a distribuição de cadeiras e partidos com base no tipo de eleição
         switch (tipoEleicao) {
             case "Senador":
-                cadeiras = new int[]{2, 1, 1, 0}; // Exemplo de distribuição de cadeiras para Senador
-                partidos = new String[]{"Partido A", "Partido B", "Partido C", "Partido D"}; // Nomes dos partidos
+                cadeiras = new int[]{2, 1, 1, 0}; // Exemplo de distribuição de cadeiras
+                partidos = new String[]{"Partido A", "Partido B", "Partido C", "Partido D"};
                 break;
             case "Deputado Federal":
-                cadeiras = new int[]{5, 3, 2, 1}; // Exemplo de distribuição de cadeiras para Deputado Federal
+                cadeiras = new int[]{5, 3, 2, 1}; // Exemplo de distribuição de cadeiras
                 partidos = new String[]{"Partido X", "Partido Y", "Partido Z", "Partido W"};
                 break;
             case "Deputado Estadual":
-                cadeiras = new int[]{8, 5, 3, 2}; // Exemplo de distribuição de cadeiras para Deputado Estadual
+                cadeiras = new int[]{8, 5, 3, 2}; // Exemplo de distribuição de cadeiras
                 partidos = new String[]{"Partido P", "Partido Q", "Partido R", "Partido S"};
                 break;
             default:
                 cadeiras = new int[0]; // Sem dados
-                partidos = new String[0]; // Sem partidos
+                partidos = new String[0];
                 break;
         }
     }
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g); // Chama o método da superclasse para limpar o painel
+        super.paintComponent(g);
         desenharGrafico(g); // Chama o método para desenhar o gráfico
     }
 
     private void desenharGrafico(Graphics g) {
-        int larguraBarra = 60; // Largura de cada barra do gráfico
+        int larguraBarra = 60; // Largura de cada barra no gráfico
         int espacoEntreBarras = 30; // Espaço entre as barras
         int alturaMaxima = getHeight() - 150; // Ajuste da altura máxima do gráfico
 
         // Eixos do gráfico
-        int eixoY = getHeight() - 100;  // Ajusta o eixo Y para a parte inferior
-        int eixoX = getWidth() - 40; // Ajusta o eixo X para a parte direita
+        int eixoY = getHeight() - 100;  // Ajusta o eixo Y
+        int eixoX = getWidth() - 40; // Ajusta o eixo X
 
         g.drawLine(40, 40, 40, eixoY);  // Desenha o eixo Y
         g.drawLine(40, eixoY, eixoX, eixoY);  // Desenha o eixo X
 
         // Cores para os partidos
-        Color[] cores = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE}; // Define cores para as barras
+        Color[] cores = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE};
 
         // Calcula o tamanho total do gráfico para centralizar as barras
-        int totalBarras = cadeiras.length; // Total de barras a serem desenhadas
+        int totalBarras = cadeiras.length; // Total de barras (partidos)
         int larguraTotal = (totalBarras * larguraBarra) + ((totalBarras - 1) * espacoEntreBarras); // Largura total do gráfico
-        int inicioX = (getWidth() - larguraTotal) / 2; // Ponto inicial para centralizar as barras
+        int inicioX = (getWidth() - larguraTotal) / 2; // Início do desenho das barras
 
         // Desenha as barras de cada partido
         for (int i = 0; i < cadeiras.length; i++) {
-            int alturaBarra = (int) ((double) cadeiras[i] / getMaxCadeiras() * alturaMaxima); // Calcula a altura da barra
-            int x = inicioX + i * (larguraBarra + espacoEntreBarras); // Calcula a posição X da barra
-            int y = eixoY - alturaBarra; // Calcula a posição Y da barra
+            // Calcula a altura da barra proporcional ao número de cadeiras
+            int alturaBarra = (int) ((double) cadeiras[i] / getMaxCadeiras() * alturaMaxima);
+            int x = inicioX + i * (larguraBarra + espacoEntreBarras); // Posição X da barra
+            int y = eixoY - alturaBarra; // Posição Y da barra
 
             g.setColor(cores[i % cores.length]);  // Define a cor da barra
             g.fillRect(x, y, larguraBarra, alturaBarra); // Desenha a barra
 
             // Desenha os números das cadeiras acima da barra
-            g.setColor(Color.BLACK); // Define a cor do texto
-            g.drawString(String.valueOf(cadeiras[i]), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(String.valueOf(cadeiras[i])) / 2, y - 5); // Números das cadeiras
-            g.drawString(partidos[i], x + larguraBarra / 2 - g.getFontMetrics().stringWidth(partidos[i]) / 2, eixoY + 15); // Nomes dos partidos
+            g.setColor(Color.BLACK);
+            g.drawString(String.valueOf(cadeiras[i]), x + larguraBarra / 2 - g.getFontMetrics().stringWidth(String.valueOf(cadeiras[i])) / 2, y - 5);
+            g.drawString(partidos[i], x + larguraBarra / 2 - g.getFontMetrics().stringWidth(partidos[i]) / 2, eixoY + 15);
         }
 
         // Desenha o título do gráfico
-        g.drawString(tipoEleicao + " - Cadeiras", (getWidth() - g.getFontMetrics().stringWidth(tipoEleicao + " - Cadeiras")) / 2, 30); // Título do gráfico
+        g.drawString(tipoEleicao + " - Cadeiras", (getWidth() - g.getFontMetrics().stringWidth(tipoEleicao + " - Cadeiras")) / 2, 30);
     }
 
     private int getMaxCadeiras() {
         // Retorna o número máximo de cadeiras para normalizar o tamanho das barras
-        int max = 0; // Inicializa o máximo
-        for (int cadeira : cadeiras) { // Itera sobre as cadeiras
+        int max = 0; 
+        for (int cadeira : cadeiras) {
             if (cadeira > max) {
-                max = cadeira; // Atualiza o máximo se necessário
+                max = cadeira; // Atualiza o máximo encontrado
             }
         }
-        return max; // Retorna o valor máximo encontrado
+        return max; // Retorna o número máximo de cadeiras
     }
 
     public void setNumCadeiras(int numCadeiras) {
@@ -111,6 +117,6 @@ public class GraficoProporcional extends JPanel {
             partidos[i] = "Partido " + (char) ('A' + i); // Atribui um nome padrão aos partidos
         }
 
-        repaint(); // Chama repaint para atualizar a visualização do gráfico
+        repaint(); // Repaint para atualizar a visualização do gráfico
     }
 }

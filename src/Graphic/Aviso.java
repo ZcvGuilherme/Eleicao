@@ -8,4 +8,13 @@ public class Aviso {
     Java não é facil.
     */
 
+    /* Explicação sobre os codigos.
+    
+    GraficoMajoritario.java é uma incognita ainda a ser definida, no caso, se será a classe será mantida ou se iremos separar em eleicoes como as proporcionais.
+    Sobre as classes das eleicoes proporcionais, será mantido a ordem, temos as eleicoes separadas e a classe responsavel pelo grafico.
+    TODAS ELAS COM COMENTARIOS PARA AUXILIAR A COMPREENSÃO!!!
+    
+    Os numeros genericos estao vindo das classes de Grafico.
+     */
+
 }
