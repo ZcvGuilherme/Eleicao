@@ -6,7 +6,8 @@ import javax.swing.text.BadLocationException;
 
 public class Status {
 
-    public static void configurarTela(Cargo cargo, JLabel textoCargo, JTextField campoTexto, JLabel errorLabel) {
+    public static void configurarTela(StatusManager statusManager, JLabel textoCargo, JTextField campoTexto, JLabel errorLabel) {
+    Cargo cargo = statusManager.getCargoAtual();
     // Atualiza o texto do cargo
     textoCargo.setText(cargo.getNome());
 

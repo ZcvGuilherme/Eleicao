@@ -26,7 +26,6 @@ public class Servidor {
                     System.out.println("Tempo de eleição encerrado.");
                     break;
                 }
-                
             }    
     }
 

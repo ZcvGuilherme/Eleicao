@@ -25,10 +25,11 @@ public class UserDAO {
             ps.execute();
             ps.close();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+           
             e.printStackTrace();
         }
     }
+
     public List<Candidato> ver_candidatos(String partido){
         String view = "select * from candidatos where partido = ?";
         PreparedStatement stmt = null;

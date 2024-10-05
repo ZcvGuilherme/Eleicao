@@ -1,6 +1,7 @@
 package GUI.Frame_Urna.tela;
 
 import GUI.Frame_Urna.configs.BotaoCriar;
+import GUI.Frame_Urna.configs.StatusManager;
 import javax.swing.*;
 
 public class TelaVota {
@@ -16,7 +17,7 @@ public class TelaVota {
         
         // Criar e adicionar o quadro branco
         JTextField campoTexto = QuadroBranco.adicionarAoPanel(panel, 50, 50, 700, 600);
-
+        
         //Configura o Cargo
         
         // Criar e adicionar os botões

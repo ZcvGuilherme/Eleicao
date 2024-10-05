@@ -6,7 +6,7 @@ import GUI.Frame_Urna.configs.Status;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.AbstractDocument;
-
+import GUI.Frame_Urna.configs.StatusManager;
 public class QuadroBranco {
 
     public static JTextField adicionarAoPanel(JPanel panel, int x, int y, int largura, int altura) {
@@ -27,8 +27,15 @@ public class QuadroBranco {
         JLabel errorLabel = new JLabel();
         errorLabel.setBounds(280, 220, 200, 30); // Posição da label de erro
         errorLabel.setForeground(Color.RED); // Define a cor do texto como vermelho
+
+        StatusManager statusManager = new StatusManager();
+        statusManager.setCargoAtual(Cargo.PRESIDENTE);
+
+
         ((AbstractDocument) campoTexto.getDocument()).setDocumentFilter(new NumericDocumentFilter(errorLabel));
-        Status.configurarTela(Cargo.PRESIDENTE, textoLabelCargo, campoTexto, errorLabel);
+
+        Status.configurarTela(statusManager, textoLabelCargo, campoTexto, errorLabel);
+        
 
         // Adiciona elementos
         quadroBranco.add(textoLabelCargo);

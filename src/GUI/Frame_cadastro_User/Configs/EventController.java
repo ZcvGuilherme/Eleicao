@@ -54,6 +54,7 @@ public class EventController {
                     
                     // Fechar janela -> Abrir janela
                     view.getFrame().dispose();
+                    listaDeIDs.remove(number);
                     TelaVota.chama_urna();
 
                 } catch (NumberFormatException ex) {
