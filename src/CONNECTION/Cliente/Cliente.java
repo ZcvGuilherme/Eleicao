@@ -26,16 +26,21 @@ public class Cliente {
         }
         return null;
     }
-    public List<Integer> receberID() {
-        List<Integer> lista = null;
+    public Integer receberID() {
+        Integer id = null;
         try {
+            // Cria o ObjectInputStream para receber dados do servidor via socket
             ObjectInputStream entrada = new ObjectInputStream(socket.getInputStream());
-            lista = (List<Integer>) entrada.readObject();  // Cast para List<Integer>
-            System.err.println("Lista recebida: " + lista);
+    
+            // Recebe o objeto (esperando que seja um Integer) e faz o cast
+            id = (Integer) entrada.readObject();
+            System.err.println("ID recebido: " + id);
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();  // Tratamento de exceção
+            // Tratamento de exceção caso ocorra algum problema na comunicação ou no cast
+            e.printStackTrace();
         }
-        return lista;  // Retorna a lista (mesmo se for null)
+    
+        return id;  // Retorna o ID recebido (ou null caso ocorra uma falha)
     }
     
     public void fecharConexao() throws IOException {

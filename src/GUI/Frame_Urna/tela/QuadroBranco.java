@@ -21,7 +21,6 @@ public class QuadroBranco {
         JLabel textoLabelNome = CriadorComponentes.criarLabel("Nome:", 50, 300, 400, 80);
         JLabel textoLabelPartido = CriadorComponentes.criarLabel("Partido:", 50, 400, 400, 80);
         JLabel textoLabelNumero = CriadorComponentes.criarLabel("Numero:", 50, 150, 400, 80);
-
         JTextField campoTexto = CriadorComponentes.criarTextField(280, 170, 200, 50);
         // Tratamento de erro
         JLabel errorLabel = new JLabel();
@@ -44,7 +43,6 @@ public class QuadroBranco {
         quadroBranco.add(textoLabelNumero);
         quadroBranco.add(campoTexto);  
         quadroBranco.add(errorLabel);
-
         // Adiciona o quadro branco ao painel principal
         panel.add(quadroBranco);
 

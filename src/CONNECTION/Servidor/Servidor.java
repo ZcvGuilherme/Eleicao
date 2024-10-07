@@ -5,6 +5,7 @@ import DATABASE.entidade.Eleicao;
 import java.io.*;
 import java.net.*;
 import java.util.List;
+import java.util.Random;
 
 public class Servidor {
     private ServerSocket serverSocket;
@@ -37,10 +38,21 @@ public class Servidor {
     }
 
     private void enviarID(Socket socket, List<Integer> lista) throws IOException{
+        if (lista.isEmpty()) {
+            System.out.println("Todos os IDs já foram distribuídos.");
+            return; // Ou pode tratar isso de outra forma
+        }
+        // Gera um índice aleatório dentro dos limites da lista
+        Random random = new Random();
+        int indexAleatorio = random.nextInt(lista.size());  // Gera um número aleatório de 0 até o tamanho da lista - 1
+
+        // Atribui o ID aleatório e o remove da lista
+        int idCliente = lista.remove(indexAleatorio); 
         ObjectOutputStream saida = new ObjectOutputStream(socket.getOutputStream());
-        saida.writeObject(lista);
+        saida.writeObject(idCliente);  // Envia apenas o ID, não a lista inteira
         saida.flush();
-        System.out.println("Lista Enviada ao cliente");
+    
+        System.out.println("ID " + idCliente + " enviado ao cliente.");
     }
     public void parar() throws IOException {
         isRunning = false; // Interrompe o loop do servidor

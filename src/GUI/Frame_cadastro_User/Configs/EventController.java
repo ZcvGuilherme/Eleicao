@@ -14,12 +14,12 @@ import javax.swing.JOptionPane;
 public class EventController {
     private Viewer view;
     private User user;
-    private List<Integer> listaDeIDs;
+    private int IDEsperado;
 
 
-    public EventController(Viewer view, List<Integer> listaDeIDs) {
+    public EventController(Viewer view, int IDEsperado) {
         this.view = view;
-        this.listaDeIDs = listaDeIDs;
+        this.IDEsperado = IDEsperado;
         init_controller();
     }
     private void init_controller() {
@@ -42,7 +42,7 @@ public class EventController {
                 try {
                     // Tenta converter o ID em número
                     int number = Integer.parseInt(ID);
-                    if (!listaDeIDs.contains(number)) {
+                    if (number != IDEsperado) {
                         JOptionPane.showMessageDialog(view.getFrame(), "ID não encontrado na lista.", "Erro", JOptionPane.ERROR_MESSAGE);
                         view.getTxtID().setBorder(BorderFactory.createLineBorder(Color.RED));
                         return; // Evita continuar se o ID não for encontrado
@@ -54,7 +54,6 @@ public class EventController {
                     
                     // Fechar janela -> Abrir janela
                     view.getFrame().dispose();
-                    listaDeIDs.remove(number);
                     TelaVota.chama_urna();
 
                 } catch (NumberFormatException ex) {
